@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cognitive Terrain · Playtest</title>
+<meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Olvana. Play in your browser or download.">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.13">
+<meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
+<meta property="og:image" content="images/board.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --void:#05070b; --panel:#0d1015; --line:#272c34; --line2:#3a414b;
+  --ink:#dde1e6; --dim:#858d98; --faint:#59616c;
+  --sand:#d8c69c; --blue:#5fe3e8; --red:#ff5242;
+  --display:'Michroma','Eurostile','Arial Narrow',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{background:var(--void);}
+body{margin:0;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;
+  background:radial-gradient(rgba(216,198,156,.05) 1px,transparent 1.2px) 0 0/22px 22px,var(--void);}
+a{color:var(--sand);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+header.top{border-bottom:1px solid var(--line);}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:16px;}
+.brand{font-family:var(--display);font-size:13px;letter-spacing:.32em;color:#f1f3f5;white-space:nowrap;}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--sand);white-space:nowrap;}
+.hero{padding:56px 0 32px;}
+.kick{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--sand);text-transform:uppercase;margin:0 0 14px;}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,52px);letter-spacing:.08em;line-height:1.15;margin:0 0 18px;color:#f4f1ea;}
+h1 em{font-style:normal;color:var(--sand);}
+.lede{max-width:680px;font-size:18px;color:#c9ced5;margin:0 0 28px;}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--sand);color:var(--sand);
+  font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-decoration:none;text-transform:uppercase;}
+.btn:hover{background:rgba(216,198,156,.08);}
+.btn.primary{background:var(--sand);color:#121314;font-weight:600;}
+.btn.primary:hover{background:#e6d7b2;}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.04em;}
+.shot{margin:36px 0 8px;border:1px solid var(--line2);display:block;width:100%;height:auto;}
+.cap{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 48px;}
+section{padding:40px 0;border-top:1px solid var(--line);}
+h2{font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.24em;color:#f1f3f5;margin:0 0 22px;text-transform:uppercase;}
+h3{font-family:var(--mono);font-size:12px;letter-spacing:.24em;color:var(--sand);margin:22px 0 8px;text-transform:uppercase;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card{border:1px solid var(--line);background:var(--panel);padding:18px 20px;}
+.card b{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--sand);margin-bottom:6px;font-weight:500;}
+.card p{margin:0;color:#c3c8cf;font-size:15px;}
+table{width:100%;border-collapse:collapse;font-size:15px;}
+th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--dim);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--line2);text-transform:uppercase;}
+td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+td.f a{font-family:var(--mono);font-size:14px;text-decoration:none;}
+td.f a:hover{text-decoration:underline;}
+td.s{font-family:var(--mono);font-size:12px;color:var(--faint);white-space:nowrap;}
+.blue{color:var(--blue);} .red{color:var(--red);}
+ol,ul{padding-left:20px;margin:6px 0;} li{margin:4px 0;}
+code{font-family:var(--mono);font-size:13px;background:#12161c;border:1px solid var(--line);padding:1px 6px;}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);font-size:13px;}
+footer p{margin:6px 0;}
+img.inline{width:100%;height:auto;border:1px solid var(--line2);}
+@media (max-width:760px){
+  .grid2,.grid3{grid-template-columns:1fr;}
+  .tag{display:none;}
+  td.s{display:none;}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><span class="tag">PLAYTEST BUILD 0.13</span></div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="kick">An educational wargame of cognitive warfare</p>
+    <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
+    <p class="lede">Blue and Olvana each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as star charts. Every dot is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
+    <div class="ctas">
+      <a class="btn primary" href="play/">Play in your browser ▸</a>
+      <a class="btn" href="downloads/0.13/Cognitive-Terrain-Field-Manual-0.13.pdf">Read the manual (PDF)</a>
+      <a class="btn" href="#downloads">All downloads</a>
+    </div>
+    <p class="note">No account, no install. Works on any computer with a modern browser. Your progress stays on your own machine.</p>
+    <img class="shot" src="images/board.jpg" alt="The game board: Olvana's brain as a red star chart, health bars for both sides, and the card bar at the bottom." width="1600" height="1000">
+    <p class="cap">Week 6 of the Typhoon Ines campaign, looking at Olvana's brain.</p>
+  </div>
+
+  <section>
+    <h2>What you do</h2>
+    <div class="grid3">
+      <div class="card"><b>ATTACK</b><p>Plant stories, frame the narrative, swarm with bots and rebrand after takedowns to push the other side's dots your way.</p></div>
+      <div class="card"><b>DEFEND</b><p>Watch for campaigns, prebunk your audiences, correct the record and learn from mistakes before the next crisis tests you.</p></div>
+      <div class="card"><b>DECIDE WELL</b><p>Crises in weeks 4, 8, 12 and 16 score each side on how well it can still notice, interpret, decide and act.</p></div>
+    </div>
+    <div class="grid2" style="margin-top:32px">
+      <div>
+        <h3>Who it is for</h3>
+        <p>Professional military education, information operations courses, analysts, students, and anyone curious how influence campaigns work on decisions rather than on poll numbers. Switch between plain language and military terms at any time.</p>
+        <h3>What it is built on</h3>
+        <p>The Multi-Horizon Cognitive OODA framework, the engagement-effectiveness metric and the disruptive-innovation forecast by Rushing, Xu and colleagues; US Army ATP 3-13.1; and open reporting on cognitive operations. Full credits are in the manual and the in-game guide.</p>
+      </div>
+      <div>
+        <img class="inline" src="images/preview.jpg" alt="Hovering a dot shows who it is, who holds it, what it does in real life and why the selected move fits it." width="900" height="730" loading="lazy">
+        <p class="cap" style="margin:8px 0 0">Hover any dot to see who it is and why a move works there in real life.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="downloads">
+    <h2>Downloads · version 0.13</h2>
+    <table>
+      <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="downloads/0.13/cognitive-terrain-0.13.html" download>cognitive-terrain-0.13.html</a></td><td class="s">0.2 MB</td></tr>
+        <tr><td>Read the rules: the illustrated field manual</td><td class="f"><a href="downloads/0.13/Cognitive-Terrain-Field-Manual-0.13.pdf">Field Manual (PDF)</a></td><td class="s">7.2 MB</td></tr>
+        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="downloads/0.13/CognitiveTerrain-0.13-Setup.exe">CognitiveTerrain-0.13-Setup.exe</a></td><td class="s">5.7 MB</td></tr>
+        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="downloads/0.13/CognitiveTerrain-0.13-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">2.2 MB</td></tr>
+        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="downloads/0.13/CognitiveTerrain-0.13-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">2.4 MB</td></tr>
+        <tr><td>Linux</td><td class="f"><a href="downloads/0.13/CognitiveTerrain-0.13-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">2.3 MB</td></tr>
+        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="downloads/0.13/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:14px">The installers are not code-signed yet. On Windows choose <b>More info → Run anyway</b>; on a Mac right-click the app and choose <b>Open</b> the first time.</p>
+  </section>
+
+  <section>
+    <h2>Play against a friend</h2>
+    <div class="grid2">
+      <div>
+        <p>Two-player games need no server and no account. Each turn ends with a short code you send any way you like: email, chat, Teams, even a file on a USB stick.</p>
+        <ol>
+          <li>Blue: <b>Two players → New game as Blue</b>, play a turn, press <b>End turn</b> and copy the code.</li>
+          <li>Olvana: <b>Two players</b>, paste Blue's code, <b>Join as Olvana</b>.</li>
+          <li>Keep swapping codes until week 16. Each player's game saves after every code.</li>
+        </ol>
+        <p class="note">Both players need the same version (0.13). Any mix of browser, HTML file and installers works.</p>
+      </div>
+      <img class="inline" src="images/turn-codes.jpg" alt="The turn-code window: your code with a copy button, and a box to paste your opponent's reply." width="900" height="640" loading="lazy">
+    </div>
+  </section>
+
+  <section>
+    <h2>Feedback</h2>
+    <p>This is a playtest. Please note which scenario and difficulty you played, whether you won, anything confusing, and anything that felt repetitive, and send it to whoever shared this page with you.</p>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 Kevin Williamson. All rights reserved. Cognitive Terrain is an independent educational project.</p>
+  <p>Adapts research by Rushing, Hersch, Umeokolo &amp; Xu under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (<a href="https://arxiv.org/abs/2603.05222">2603.05222</a>, <a href="https://arxiv.org/abs/2510.15805">2510.15805</a>, <a href="https://arxiv.org/abs/2510.15801">2510.15801</a>); the authors have not reviewed or endorsed this game. Olvana is the opposing force from the US Army's ODIN DATE training environment. All scenarios, places and events are original fiction.</p>
+</div></footer>
+</body>
+</html>

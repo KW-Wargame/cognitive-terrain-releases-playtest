@@ -1,0 +1,47 @@
+name: Voice pack
+# Builds the optional Immersive Edition voice pack (CognitiveTerrain-Voice-Emma.zip),
+# checks that it speaks with the network switched off, and, when
+# .github/voice-pack/pack.json says "publish": true, attaches it to its own release.
+on:
+  push:
+    branches: [main]
+    paths: ['.github/voice-pack/**', '.github/workflows/voice-pack.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .github/voice-pack
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund 2>&1 | tee -a ../../vp.log
+      - run: npx playwright install --with-deps chromium > /dev/null
+      - name: Build
+        run: node build.mjs 2>&1 | tee -a ../../vp.log; exit ${PIPESTATUS[0]}
+      - name: Smoke test (offline)
+        run: node smoke.mjs 2>&1 | tee -a ../../vp.log; exit ${PIPESTATUS[0]}
+      - name: Report
+        if: always()
+        run: |
+          if [ -f out/summary.json ]; then
+            echo "::notice title=voice-pack summary::$(node -e "console.log(JSON.stringify(require('./out/summary.json')))")"
+          fi
+          tail -c 20000 ../../vp.log | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{s=s.replace(/%/g,'%25').replace(/\r/g,'').replace(/\n/g,'%0A');console.log('::warning title=voice-pack log::'+s)})"
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PUB=$(node -p "require('./pack.json').publish")
+          TAG=$(node -p "require('./pack.json').release")
+          ZIP=$(node -p "require('./pack.json').zip")
+          if [ "$PUB" != "true" ]; then echo "publish is off"; exit 0; fi
+          if gh release view "$TAG" >/dev/null 2>&1; then echo "$TAG already published; bump the id to publish a new pack"; exit 0; fi
+          cp out/summary.json out/voice-pack-summary.json
+          gh release create "$TAG" "out/$ZIP" out/voice-pack-summary.json --title "Immersive Edition voice pack (Emma, UK)" \
+            --notes-file release-notes.md --latest=false

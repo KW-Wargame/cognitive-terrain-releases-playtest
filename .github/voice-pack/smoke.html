@@ -1,0 +1,38 @@
+<!doctype html><meta charset="utf-8"><title>voice pack smoke test</title>
+<script type="module">
+// Loads the unzipped pack the way the game does (module worker, files as Blobs) and speaks one line.
+const WORKER = `let eng;
+onmessage = async e => {
+  const d = e.data;
+  try {
+    if (d.t === 'load') {
+      eng = await import(URL.createObjectURL(new Blob([d.files[d.manifest.engine]], { type: 'text/javascript' })));
+      const t0 = performance.now();
+      const r = await eng.load(d.files, d.manifest);
+      postMessage({ t: 'ready', ms: performance.now() - t0, misses: r.misses });
+    } else if (d.t === 'say') {
+      const t0 = performance.now();
+      const r = await eng.speak(d.text, { speed: d.speed || 1 });
+      postMessage({ t: 'audio', ms: performance.now() - t0, n: r.audio.length, rate: r.rate, peak: r.audio.reduce((a, x) => Math.max(a, Math.abs(x)), 0), misses: eng.misses.slice() });
+    }
+  } catch (err) { postMessage({ t: 'err', m: String(err && err.stack || err) }); }
+};`;
+window.prepare = async () => {
+  const manifest = await (await fetch('pack/manifest.json')).json();
+  const files = {};
+  for (const f of Object.keys(manifest.files)) files[f] = await (await fetch('pack/' + f)).blob();
+  window.pk = { manifest, files };
+  return Object.keys(files).length;
+};
+window.run = (text) => new Promise(resolve => {
+  const w = new Worker(URL.createObjectURL(new Blob([WORKER], { type: 'text/javascript' })), { type: 'module' });
+  const log = [];
+  w.onmessage = e => {
+    log.push(e.data);
+    if (e.data.t === 'ready') w.postMessage({ t: 'say', text });
+    else resolve(log);
+  };
+  w.onerror = e => resolve(log.concat({ t: 'err', m: 'worker error: ' + e.message }));
+  w.postMessage({ t: 'load', files: pk.files, manifest: pk.manifest });
+});
+</script>

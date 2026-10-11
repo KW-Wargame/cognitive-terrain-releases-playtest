@@ -1,0 +1,11 @@
+{
+  "name": "cognitive-terrain-voice-pack",
+  "private": true,
+  "type": "module",
+  "description": "Builds the optional Immersive Edition voice pack (Kokoro-82M, voice bf_emma) for Cognitive Terrain.",
+  "dependencies": {
+    "kokoro-js": "1.2.0",
+    "esbuild": "0.25.0",
+    "playwright": "1.56.0"
+  }
+}

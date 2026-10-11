@@ -205,6 +205,7 @@ tr:nth-child(even) td{background:rgba(255,255,255,.018);}
 .crs b{font-weight:600;}
 .crs em{font-style:normal;font-family:var(--mono);font-size:6.4pt;letter-spacing:.14em;color:var(--dim);}
 .crs li.x2 svg,.crs li.x2 em{color:var(--sand);}
+.crd .box p{font-size:8pt;text-align:left;line-height:1.4}
 `,rt=[{cls:"cover",num:"01",name:"COVER",title:"Cognitive Terrain",html:`
   <div class="mast">
     <div class="tiny"><span>PLAYTEST EDITION \xB7 BUILD 0.14</span><span>THE OFFICIAL FIELD MANUAL</span><span>FREE WITH EVERY COPY</span></div>
@@ -864,10 +865,10 @@ tr:nth-child(even) td{background:rgba(255,255,255,.018);}
 `},{cls:"edge",num:"26",name:"CREDITS",title:"Where this comes from",html:`
   <div class="tab"><b>26</b><span>CREDITS</span></div>
   <div class="kick">SOURCES \xB7 ATTRIBUTION \xB7 LICENSE</div>
-  <h1>Where this <em>comes from</em></h1>
+  <h1 style="font-size:44pt">Where this <em>comes from</em></h1>
   <p class="deck">The game is built on published research. The rules simplify it; the debrief and the in-game guide point back to it.</p>
   <h3>REFERENCES</h3>
-  <ul class="l ref">
+  <ul class="l ref" style="columns:2;column-gap:18px;font-size:8.2pt">
     <li>Rushing, B., Hersch, W., &amp; Xu, S. (2026). <i>Cognitive Warfare: Definition, Framework, and Case Study.</i> arXiv:2603.05222.</li>
     <li>Rushing, B., &amp; Xu, S. (2025). <i>Quantifying the Engagement Effectiveness of Cyber Cognitive Attacks: A Behavioral Metric for Disinformation Campaigns.</i> arXiv:2510.15805.</li>
     <li>Rushing, B., Umeokolo, M.-R., &amp; Xu, S. (2025). <i>Towards Proactive Defense Against Cyber Cognitive Attacks.</i> arXiv:2510.15801.</li>
@@ -882,13 +883,21 @@ tr:nth-child(even) td{background:rgba(255,255,255,.018);}
     <li>U.S. Army TRADOC G-2. <i>Decisive Action Training Environment (DATE)</i>, Operational Environment Data Integration Network (ODIN): Olvana, Donovia, Bothnia, Framland, Arnland, Gorgas.</li>
     <li>Roozenbeek, J., &amp; van der Linden, S. (2020). <i>Breaking Harmony Square: A game that inoculates against political misinformation</i> (cited in Rushing et al.).</li>
   </ul>
-  <div class="box s">
+  <div class="grid2 crd" style="align-items:start">
+  <div class="box s" style="margin:0">
     <h3 style="margin-top:0">ATTRIBUTION AND LICENSE</h3>
     <p>This game and manual adapt concepts, the capability taxonomy, the engagement-effectiveness metric (formula, interaction weights and grade scale) and two sets of innovation attribute scores from the three Rushing et al. papers above. Each paper is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0): creativecommons.org/licenses/by/4.0. Papers: arxiv.org/abs/2603.05222 \xB7 arxiv.org/abs/2510.15805 \xB7 arxiv.org/abs/2510.15801.</p>
     <p><b>Changes made:</b> the material was adapted into game mechanics and rewritten for play. Engagement grades are mapped to effect multipliers invented for this game; the OODA effects, capability families and cognitive superiority definition are expressed as game rules; three of the five innovation score sets are the designer's own estimates; all scenario, narrative and tutorial text is original.</p>
     <p><b>No endorsement:</b> the authors and their institutions have not reviewed or endorsed this game.</p>
   </div>
-  <p class="l" style="color:var(--dim);font-size:8.6pt">Olvana and Donovia, and the countries Bothnia, Framland, Arnland and Gorgas, are fictional training countries from the US Army's ODIN DATE environment; they are used here without endorsement. All eight scenarios, their towns, outlets, people and every event in them are original fiction. Any resemblance to real places or events is coincidental. Donovia's rules follow the NATO, ISW, IISS and Carnegie research above; game effects are abstractions of broad, publicly reported patterns, not claims about any specific operation.</p>
+  <div>
+  <div class="box s" style="margin:0">
+    <h3 style="margin-top:0">HOW THIS GAME WAS MADE</h3>
+    <p><b>Design, direction, research selection and review:</b> Kevin Williamson. <b>Development assistance:</b> AI. Working from my design and the research I supplied, the AI wrote most of the code, tests and build tools, drafted this manual, the tutorial, campaigns, headlines and release notes, and ran the balance testing. I set the direction, made the design decisions, chose the sources, and reviewed, revised or rejected its work. Those sources, not the AI, are the authority for any rule that models real-world behaviour; any errors are mine. The art, icons and music are drawn and synthesized by the game's own code; no AI image, voice or music generators were used, and no AI runs while you play.</p>
+  </div>
+  <p class="l" style="color:var(--dim);font-size:8pt;margin-top:10px">Olvana and Donovia, and the countries Bothnia, Framland, Arnland and Gorgas, are fictional training countries from the US Army's ODIN DATE environment; they are used here without endorsement. All eight scenarios, their towns, outlets, people and every event in them are original fiction. Any resemblance to real places or events is coincidental. Donovia's rules follow the NATO, ISW, IISS and Carnegie research above; game effects are abstractions of broad, publicly reported patterns, not claims about any specific operation.</p>
+  </div>
+  </div>
   <div class="folio"><span>Cognitive Terrain \xB7 Field Manual</span><span><b>26</b></span></div>
 `},{cls:"edge",num:"27",name:"QUICK REF",title:"Quick reference card",html:`
   <div class="tab"><b>27</b><span>QUICK REF</span></div>
@@ -1070,7 +1079,7 @@ tr:nth-child(even) td{background:rgba(255,255,255,.018);}
    <p>You command Blue. Protect your side's ability to make good decisions, wear down your opponent's, and handle the crises well.</p>
    ${Us()}
    <div class="go"><button class="cta" id="wTut" type="button">START WITH TUTORIAL \u25B8</button><button class="cta alt" id="wSkip" type="button">SKIP TO THE GAME</button><button class="cta alt" id="w2p" type="button">TWO PLAYERS</button><button class="cta alt" id="wMan" type="button">READ THE GUIDE</button><button class="cta alt" id="wCamp" type="button">CAMPAIGNS</button></div>
-   <p class="note" style="margin-top:16px">Built on Rushing, Hersch & Xu's Multi-Horizon Cognitive OODA framework, the engagement effectiveness metric and the disruptive-innovation forecast, adapted under CC BY 4.0. Olvana and Donovia are fictional countries from the U.S. Army TRADOC Decisive Action Training Environment (DATE). Donovia's methods draw on NATO C2COE, ISW, IISS and Carnegie research. Full sources and attribution are in the Guide. \xB7 Playtest build ${Rs}</p>`,!1),Qs();let e=t=>{be.hidden=!0,(s.diff!==Qe||s.scnId!==ze)&&De(s.seed),t&&ko()};p("#wTut").onclick=()=>e(!0),p("#wSkip").onclick=()=>e(!1),p("#w2p").onclick=()=>en(),p("#wCamp").onclick=()=>Rt(),p("#wMan").onclick=()=>{(s.diff!==Qe||s.scnId!==ze)&&De(s.seed),sn(0)}}function Vo(e){re(`<h2>NEW CAMPAIGN</h2><div class="kick">A FRESH MAP OF BOTH BRAINS</div>${Us()}
+   <p class="note" style="margin-top:16px">Built on Rushing, Hersch & Xu's Multi-Horizon Cognitive OODA framework, the engagement effectiveness metric and the disruptive-innovation forecast, adapted under CC BY 4.0. Olvana and Donovia are fictional countries from the U.S. Army TRADOC Decisive Action Training Environment (DATE). Donovia's methods draw on NATO C2COE, ISW, IISS and Carnegie research. Full sources and attribution are in the Guide.</p><p class="note">Designed by Kevin Williamson. Built with substantial help from AI, which wrote much of the code and text under the designer's direction; every rule, campaign and page was reviewed and approved by the designer. No AI is used while you play. \xB7 Playtest build ${Rs}</p>`,!1),Qs();let e=t=>{be.hidden=!0,(s.diff!==Qe||s.scnId!==ze)&&De(s.seed),t&&ko()};p("#wTut").onclick=()=>e(!0),p("#wSkip").onclick=()=>e(!1),p("#w2p").onclick=()=>en(),p("#wCamp").onclick=()=>Rt(),p("#wMan").onclick=()=>{(s.diff!==Qe||s.scnId!==ze)&&De(s.seed),sn(0)}}function Vo(e){re(`<h2>NEW CAMPAIGN</h2><div class="kick">A FRESH MAP OF BOTH BRAINS</div>${Us()}
    <div class="go"><button class="cta" id="sGo" type="button">START \u25B8</button><button class="cta alt" id="s2p" type="button">TWO PLAYERS</button>${e?"":'<button class="cta alt" type="button" data-close>CANCEL</button>'}</div>`,!e),Qs(),p("#sGo").onclick=()=>{be.hidden=!0,$e(),De(Math.random()*1e9|0)},p("#s2p").onclick=()=>en()}function Xs(){let e=(n,o,i)=>`<div class="srow"><div><div class="sl">${o}</div>${i?`<div class="sd">${i}</div>`:""}</div><button type="button" class="tog${N[n]?" on":""}" data-k="${n}" role="switch" aria-checked="${!!N[n]}" aria-label="${o}"></button></div>`,t=(n,o,i,r)=>`<div class="srow"><div><div class="sl">${o}</div>${r?`<div class="sd">${r}</div>`:""}</div><div class="sseg" data-k="${n}">${i.map(([l,c])=>`<button type="button" data-v="${l}" class="${N[n]===l?"on":""}">${c}</button>`).join("")}</div></div>`,a=(n,o,i,r)=>`<div class="srow"><div><div class="sl">${o}</div>${r?`<div class="sd">${r}</div>`:""}</div><input type="range" id="${n}" min="0" max="100" value="${i}" aria-label="${o}"></div>`;O.classList.add("wide"),re(`<h2>SETTINGS</h2><div class="kick">COLOURS \xB7 LANGUAGE \xB7 SOUND \xB7 READING \xB7 PACE</div>
    <h3 style="margin-top:6px">COLOUR SCHEME</h3>
    <div class="schemes" role="radiogroup" aria-label="Colour scheme">${["GAME","OPERATIONS FLOOR"].map(n=>`<div class="schg">${n==="GAME"?"GAME COLOURS":n}</div>`+Nt.filter(o=>o.group===n).map(o=>`<button type="button" role="radio" class="sch${(N.theme||"starmap")===o.id?" on":""}" aria-checked="${(N.theme||"starmap")===o.id}" data-s="${o.id}" title="${g(o.blurb)}"><span class="sw" style="background:${o.css.void};border-color:${o.css.line2}">${[o.css.blue,o.css.red,o.css.sand].map(i=>`<i style="background:${i}"></i>`).join("")}<em style="color:${o.css.ink}">Aa</em></span><b>${g(o.name)}</b></button>`).join("")).join("")}</div>

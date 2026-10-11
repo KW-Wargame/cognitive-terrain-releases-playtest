@@ -14,3 +14,8 @@ An educational, turn-based wargame of cognitive warfare: Blue vs Red (Olvana or 
 | Installers and every earlier version | [Releases](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases) |
 
 This repository holds released builds only. © 2026 Kevin Williamson. All rights reserved.
+
+## Licence
+
+Copyright (c) 2026 Kevin Williamson. All rights reserved. See [LICENSE](LICENSE).
+This repository holds only the public playtest page and builds, not the game's source code.

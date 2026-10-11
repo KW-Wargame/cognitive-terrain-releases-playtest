@@ -120,9 +120,11 @@ dialog.lb button:hover{border-color:var(--sand);}
 .mus .eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;}
 .mus .eq i{display:block;width:2px;background:var(--sand);height:3px;}
 .mus.on .eq i{animation:eq 1.2s ease-in-out infinite;}
+.mus.wait{border-color:var(--sand);animation:muswait 2.4s ease-in-out infinite;}
+@keyframes muswait{50%{box-shadow:0 0 0 4px rgba(220,203,159,.18);}}
 .mus.on .eq i:nth-child(2){animation-delay:-.4s;}.mus.on .eq i:nth-child(3){animation-delay:-.8s;}
 @keyframes eq{0%,100%{height:3px}50%{height:12px}}
-@media (prefers-reduced-motion:reduce){.mus.on .eq i{animation:none;height:8px;}}
+@media (prefers-reduced-motion:reduce){.mus.on .eq i{animation:none;height:8px;}.mus.wait{animation:none;}}
 @media (max-width:560px){.tag{display:none;}}
 .dn{margin:14px 0 0;padding:12px 16px;border-left:2px solid var(--sand);background:var(--panel);font-style:italic;color:#dfe3e7;}
 .opt{margin:0 0 10px;padding:10px 14px;border:1px solid var(--sand);color:#dfe3e7;}
@@ -480,25 +482,30 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   }
   btn.addEventListener('click',function(e){
     e.stopPropagation();
-    if(playing){stop();save(false);}else{save(true);play().catch(function(){});}
+    waiting(false);
+    if(playing){stop();save(false);listen(false);}else{save(true);play().catch(function(){});}
   });
+  // Browsers only allow sound after the visitor interacts with the page (scrolling does not count).
+  // Until then the button invites a click; any tap, click or key starts the music.
+  var GESTURES=['pointerdown','mousedown','touchend','click','keydown'];
+  function listen(on){GESTURES.forEach(function(t){(on?addEventListener:removeEventListener)(t,unlock,true);});}
+  function waiting(on){btn.classList.toggle('wait',on&&!playing);if(on&&!playing){lab.textContent='Click for music';}}
   function unlock(e){
     if(e&&e.target&&btn.contains(e.target)){return;}
-    removeEventListener('pointerdown',unlock,true);removeEventListener('keydown',unlock,true);
-    if(!playing&&pref()){play().catch(function(){});}
+    if(playing||!pref()){listen(false);waiting(false);return;}
+    play().then(function(){listen(false);waiting(false);}).catch(function(){});
   }
   if(pref()){
-    play().then(function(){
-      removeEventListener('pointerdown',unlock,true);removeEventListener('keydown',unlock,true);
-    }).catch(function(){});
-    addEventListener('pointerdown',unlock,true);addEventListener('keydown',unlock,true);
+    play().catch(function(){waiting(true);});
+    if(ctx&&ctx.state!=='running'){waiting(true);}
+    listen(true);
   }
   document.addEventListener('visibilitychange',function(){
     if(!playing){return;}
     if(ctx){document.hidden?ctx.suspend():ctx.resume();}
     else if(el){document.hidden?el.pause():el.play();}
   });
-  ui();
+  if(!btn.classList.contains('wait')){ui();}
 })();
 </script>
 <script>

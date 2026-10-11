@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.14.2">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.15">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
 <meta property="og:image" content="images/board.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,17 +130,19 @@ dialog.lb button:hover{border-color:var(--sand);}
 .vb figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--dim);margin-top:6px;}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 @media (max-width:720px){.ver summary{grid-template-columns:auto 1fr 28px;row-gap:2px;}.vd{grid-column:2;grid-row:1;}.vt{grid-column:1/3;grid-row:2;font-size:14px;}.vi{grid-column:3;grid-row:1/3;}}
+.vt{display:flex;flex-wrap:wrap;gap:6px;}
+.vt .cat{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);border:1px solid var(--line2);padding:2px 8px;}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.14.2</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.15</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.14.2</b> How Olvana fights, both opponents side by side, and source-checked text. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.15</b> A much harder Veteran, node status icons, an orders queue and more story per move. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
-    <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as star charts. Every dot is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
+    <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
     <div class="ctas">
       <a class="btn primary" href="play/">Play in your browser ▸</a>
       <a class="btn" href="manual/Cognitive-Terrain-Field-Manual.pdf">Read the manual (PDF)</a>
@@ -154,26 +156,37 @@ dialog.lb button:hover{border-color:var(--sand);}
   <section id="whats-new">
     <h2>What's new</h2>
     <dl class="log">
-      <dt>0.14.2<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
+      <dt>0.15<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
       <dd><ul>
+        <li><b>A much harder Veteran.</b> On Veteran, Olvana and Donovia now plan two moves ahead: they try their best options, let the week play out, and keep the move that leaves them best placed for the next crisis. They play fair: no extra budget, no hidden information, and their trial runs never peek at the game's own dice. Recruit and Standard are unchanged.</li>
+        <li><b>Node status at a glance.</b> Tiny icons under each node show whether it is watched, prebunked or framed, and its label names them in their own colours. A Watch Team or Prebunk is drawn as one outline around every node it covers, with the weeks left; pick the card and hover a node to preview what it would cover.</li>
+        <li><b>This week's orders.</b> Above the timeline, each move this week stacks up as an icon, like a strategy game's queue. Click one for its story.</li>
+        <li><b>More story per move.</b> Move pop-ups and the opponent's move cards now tell you what was done and what it changed, without opening the full story.</li>
+        <li><b>Decision Health, explained.</b> The side panel shows how your health is made: areas × trust − lost areas − flooding. Difficulty never changes it.</li>
+        <li>"Dots" are now <b>nodes</b> everywhere. Two-player codes work between 0.15 builds.</li>
+      </ul>
+      <figure><img src="images/changelog/0.15-turn.jpg" alt="Donovia's turn on Veteran: this week's orders stacked as icons on the left, and Donovia's move cards on the right with a few lines of the story each." loading="lazy"><figcaption>This week's orders, and the story on each move card</figcaption></figure>
+      <figure><img src="images/changelog/0.15-coverage.jpg" alt="Blue's brain with a Watch Team and a Prebunk each outlined around the nodes they cover, status icons under nodes, and a preview of a new Watch Team covering four nodes." loading="lazy"><figcaption>Status icons and the nodes each defence covers</figcaption></figure>
+      </dd>
+    </dl>
+    <h3 class="vh">Earlier versions</h3>
+    <div class="vers">
+      <details class="ver"><summary><span class="vv">0.14.2</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Accuracy, Opponents, Manual"><i class="cat">Accuracy</i><i class="cat">Opponents</i><i class="cat">Manual</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.14.2</span></summary>
+      <div class="vb"><ul>
         <li><b>Source check.</b> Every real-world claim in the game and the field manual was checked again against the cited research. A few lines were tightened to say exactly what the sources say, and anything that is a game assumption is now labelled as one.</li>
         <li><b>How Olvana fights.</b> Olvana now gets the same treatment as Donovia: its own cards in the game's "How Olvana fights" panel and its own field manual page, showing what each rule does, where it comes from and where Olvana is weak.</li>
         <li><b>Both opponents side by side.</b> The manual's "Know your enemy" pages now set out the rules both opponents share, then what is unique to each, with tips for beating them and a designer's note on how each should feel to play.</li>
         <li>No rule changes: two-player codes between 0.14 builds still work.</li>
       </ul>
-      <div class="figs tall"><figure><img src="images/changelog/0.14.2-olvana.jpg" alt="Field manual page 24, How Olvana fights: rule cards, weaknesses, tips and a designer's note." loading="lazy"><figcaption>How Olvana fights (manual p. 24)</figcaption></figure><figure><img src="images/changelog/0.14.2-donovia.jpg" alt="Field manual page 25, How Donovia fights: rule cards, weaknesses, tips and a designer's note." loading="lazy"><figcaption>How Donovia fights (manual p. 25)</figcaption></figure></div>
-      </dd>
-    </dl>
-    <h3 class="vh">Earlier versions</h3>
-    <div class="vers">
-      <details class="ver"><summary><span class="vv">0.14.1</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt">Music on this page</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.14.1</span></summary>
+      <div class="figs tall"><figure><img src="images/changelog/0.14.2-olvana.jpg" alt="Field manual page 24, How Olvana fights: rule cards, weaknesses, tips and a designer's note." loading="lazy"><figcaption>How Olvana fights (manual p. 24)</figcaption></figure><figure><img src="images/changelog/0.14.2-donovia.jpg" alt="Field manual page 25, How Donovia fights: rule cards, weaknesses, tips and a designer's note." loading="lazy"><figcaption>How Donovia fights (manual p. 25)</figcaption></figure></div></div></details>
+      <details class="ver"><summary><span class="vv">0.14.1</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Site, Credits"><i class="cat">Site</i><i class="cat">Credits</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.14.1</span></summary>
       <div class="vb"><ul>
         <li><b>Music on this page.</b> Night Watch, the game's main theme, now plays here too. It fades in when you arrive, or at your first click if your browser holds sound back until then. The <b>Music</b> button in the top bar turns it off, and the page remembers your choice. It pauses when you switch tabs.</li>
         <li><b>How the game was made.</b> The start screen, the field manual's credits page and the project notes now set out how the game was made: the concept, design, rules, sources, opponents and campaigns are mine, and AI tools helped with code and drafting under my direction and review. No AI runs while you play.</li>
         <li>No rule changes: two-player codes between 0.14 builds still work.</li>
       </ul>
       <p class="dn"><b>DESIGNER'S NOTE</b>This one is purely for fun. A wargame becomes memorable when it is engaging. Night Watch was written to sound like the quiet hours on an operations floor. It seemed a shame to keep it locked behind the start screen. If it isn't your thing, one click turns it off.</p></div></details>
-      <details class="ver"><summary><span class="vv">0.14</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt">A second opponent: Donovia</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.14</span></summary>
+      <details class="ver"><summary><span class="vv">0.14</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: New opponent, Campaigns, Manual"><i class="cat">New opponent</i><i class="cat">Campaigns</i><i class="cat">Manual</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.14</span></summary>
       <div class="vb"><ul>
         <li><b>A second opponent: Donovia.</b> Like Olvana, it is a fictional country from the U.S. Army's training environment (DATE), and it plays by its own rules, each drawn from published research by NATO, ISW, IISS and Carnegie: it <b>floods the zone</b> (many attacks in a week slow your decisions), <b>plants premises</b> (its framing lasts longer), hides <b>dormant narratives</b> in your mind that hit twice as hard when switched on, and has a ninth move, <b>Show of Force</b>, that makes your next move cost more but can backfire. It is also predictable and brittle, so prebunking works better against it.</li>
         <li><b>Four new campaigns, all original fiction:</b> Winter Grid, The Lake Referendum, The Silent Survey Ship and The Vell Valley, a story of annexation.</li>
@@ -184,7 +197,7 @@ dialog.lb button:hover{border-color:var(--sand);}
       <figure><img src="images/changelog/0.14-board.jpg" alt="A game against Donovia in The Vell Valley: Blue's mind, with Donovia's moves numbered on the side panel." loading="lazy"><figcaption>Playing against Donovia</figcaption></figure>
       <div class="figs"><figure><img src="images/changelog/0.14-opponent.jpg" alt="How Donovia fights: each rule with what it does in the game and its source." loading="lazy"><figcaption>How Donovia fights, with sources</figcaption></figure><figure><img src="images/changelog/0.14-start.jpg" alt="The start screen with eight campaigns, each marked VS OLVANA or VS DONOVIA." loading="lazy"><figcaption>Eight campaigns</figcaption></figure></div>
       </div></details>
-      <details class="ver"><summary><span class="vv">0.13.5</span><span class="vd">11 Oct 2026 · browser</span><span class="vt">18 real technologies for your campaigns</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.5</span></summary>
+      <details class="ver"><summary><span class="vv">0.13.5</span><span class="vd">11 Oct 2026 · browser</span><span class="vt" aria-label="Categories: Campaign editor, Technologies"><i class="cat">Campaign editor</i><i class="cat">Technologies</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.5</span></summary>
       <div class="vb"><ul>
         <li><b>18 real technologies for your campaigns</b>, past, present and future, all from the game's research: the eleven in Rushing, Umeokolo &amp; Xu (2025), from e-mail in 1971 to AI synthetic media, plus Autonomous AI Agents, AI Vulnerability Mapping, Humanoid Robots, Brain-Computer Interfaces, Neuro-cognitive Weapons, Quantum Computing and Cognitive Biotechnology (from the NATO Chief Scientist, NIU and NeuroStrike reports).</li>
         <li><b>Build your own technology</b>, or change a preset: its name and year, the four attribute scores the research uses (with the total and whether the paper's model would flag it), the moves it boosts, by how much, and its special effects.</li>
@@ -194,10 +207,10 @@ dialog.lb button:hover{border-color:var(--sand);}
       <figure><img src="images/changelog/0.13.5-editor.jpg" alt="The campaign editor with tabs for Calendar, Story, Sides and Start, and Headlines, a two-row calendar, and a crisis being edited on the right." loading="lazy"><figcaption>The cleaner campaign editor</figcaption></figure>
       <div class="figs tall"><figure><img src="images/changelog/0.13.5-presets.jpg" alt="The technology picker: presets grouped into past, present and future, each with its year, S score and what it does, plus a Build your own button." loading="lazy"><figcaption>Technology presets</figcaption></figure><figure><img src="images/changelog/0.13.5-custom.jpg" alt="Editing a technology: name, year, era, attribute scores from low to high with the S total, the moves it boosts, and how much." loading="lazy"><figcaption>Build your own technology</figcaption></figure></div>
       </div></details>
-      <details class="ver"><summary><span class="vv">0.13.4</span><span class="vd">11 Oct 2026 · browser</span><span class="vt">Week in review</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.4</span></summary>
+      <details class="ver"><summary><span class="vv">0.13.4</span><span class="vd">11 Oct 2026 · browser</span><span class="vt" aria-label="Categories: Interface, Campaign editor, Replay"><i class="cat">Interface</i><i class="cat">Campaign editor</i><i class="cat">Replay</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.4</span></summary>
       <div class="vb"><ul>
-        <li><b>Week in review.</b> At the end of every week: both sides' health, your moves and what each achieved, Olvana's moves with the most likely reason, how each part of your mind moved, and what the next crisis needs. SHOW ON MAP lights up the dots that changed. You can switch it off in Settings ⚙.</li>
-        <li><b>See what Olvana does.</b> While Olvana moves, the dot it hit lights up on the map with a number and the rest of the map dims. Each move card says why Olvana probably chose it, and the cards sit over the side panel so they never hide the map.</li>
+        <li><b>Week in review.</b> At the end of every week: both sides' health, your moves and what each achieved, Olvana's moves with the most likely reason, how each part of your mind moved, and what the next crisis needs. SHOW ON MAP lights up the nodes that changed. You can switch it off in Settings ⚙.</li>
+        <li><b>See what Olvana does.</b> While Olvana moves, the node it hit lights up on the map with a number and the rest of the map dims. Each move card says why Olvana probably chose it, and the cards sit over the side panel so they never hide the map.</li>
         <li><b>Looking ahead.</b> From two weeks before a crisis, the side panel shows how each side would handle it today and where Olvana has been aiming.</li>
         <li><b>Replay in the debrief.</b> Step or play through the whole campaign: both minds week by week, the moves, the crises and the turning points.</li>
         <li><b>Campaign editor.</b> Press CAMPAIGNS on the start screen. Make your own campaign or copy a built-in one, place crises and new technologies on the calendar, write the briefing, set how strong each side starts, check its balance and test play it. Share it as a file or a code; import other people's.</li>
@@ -206,9 +219,9 @@ dialog.lb button:hover{border-color:var(--sand);}
       <div class="figs"><figure><img src="images/changelog/0.13.4-review.jpg" alt="The week in review: health for both sides, your moves, Olvana's moves with reasons, how your areas changed, and looking ahead to the next crisis." loading="lazy"><figcaption>Week in review</figcaption></figure><figure><img src="images/changelog/0.13.4-olvana.jpg" alt="Olvana's second move lit up on Blue's map, with numbered move cards and reasons docked over the side panel." loading="lazy"><figcaption>Olvana's moves on the map</figcaption></figure></div>
       <div class="figs"><figure><img src="images/changelog/0.13.4-editor.jpg" alt="The campaign editor: a sixteen-week calendar of crises and new technologies, setting fields, and a crisis being edited on the right." loading="lazy"><figcaption>The campaign editor</figcaption></figure><figure><img src="images/changelog/0.13.4-replay.jpg" alt="The debrief replay: a week strip with crises and turning points, both minds as small star maps, and that week's moves." loading="lazy"><figcaption>Debrief replay</figcaption></figure></div>
       </div></details>
-      <details class="ver"><summary><span class="vv">0.13.3</span><span class="vd">11 Oct 2026 · browser</span><span class="vt">Cleaner panels</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.3</span></summary>
+      <details class="ver"><summary><span class="vv">0.13.3</span><span class="vd">11 Oct 2026 · browser</span><span class="vt" aria-label="Categories: Interface, Guide, Music"><i class="cat">Interface</i><i class="cat">Guide</i><i class="cat">Music</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.3</span></summary>
       <div class="vb"><ul>
-        <li><b>Cleaner panels.</b> Hovering a dot now shows a short card: who it is, a tug-of-war bar for who holds it, and the expected result of your move as three big numbers. The longer real-life explanations fold away in the side panel until you want them.</li>
+        <li><b>Cleaner panels.</b> Hovering a node now shows a short card: who it is, a tug-of-war bar for who holds it, and the expected result of your move as three big numbers. The longer real-life explanations fold away in the side panel until you want them.</li>
         <li><b>A readable log.</b> Each move is one row with its card icon, target and result badge; weeks, new technologies and crisis results have their own markers.</li>
         <li><b>The field manual is now the in-game Guide</b>, page for page: the same magazine pages as the PDF, with a contents rail and page buttons. It works offline and remembers where you were.</li>
         <li><b>Updated field manual.</b> Every screenshot is retaken from this build; the new PDF is in Downloads.</li>
@@ -217,7 +230,7 @@ dialog.lb button:hover{border-color:var(--sand);}
       <div class="figs"><figure><img src="images/changelog/0.13.3-panels.jpg" alt="The new hover card and side panel: chips for side and area, a tug-of-war bar, and three result tiles." loading="lazy"><figcaption>Hover card and side panel</figcaption></figure><figure><img src="images/changelog/0.13.3-log.jpg" alt="The new log: a week divider, a new technology row and move rows with icons and grade badges." loading="lazy"><figcaption>The log</figcaption></figure></div>
       <div class="figs"><figure><img src="images/changelog/0.13.3-guide.jpg" alt="The in-game Guide showing the field manual page Pick. Aim. Preview. Strike., with the contents rail on the left." loading="lazy"><figcaption>The field manual, inside the game</figcaption></figure><figure><img src="images/changelog/0.13.3-music.jpg" alt="The music track picker in Settings with four tracks." loading="lazy"><figcaption>Pick a music track</figcaption></figure></div>
       </div></details>
-      <details class="ver"><summary><span class="vv">0.13.2</span><span class="vd">10 Oct 2026 · browser</span><span class="vt">Twelve colour schemes</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.2</span></summary>
+      <details class="ver"><summary><span class="vv">0.13.2</span><span class="vd">10 Oct 2026 · browser</span><span class="vt" aria-label="Categories: Accessibility, Colour schemes"><i class="cat">Accessibility</i><i class="cat">Colour schemes</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.2</span></summary>
       <div class="vb"><ul>
         <li><b>Twelve colour schemes</b> in Settings ⚙, all keeping the star chart: Starmap, High Contrast, Dusk and Chart Room (a light paper chart for projectors and bright rooms), plus eight operations-floor schemes: Clear Signal, Narrative, OODA, Resilience, Friction, Grey Zone, Ground Truth and Cognitive Domain.</li>
         <li><b>Easier-to-read text.</b> The grey text is brighter everywhere; the dimmest text is now more than twice as readable.</li>
@@ -225,7 +238,7 @@ dialog.lb button:hover{border-color:var(--sand);}
       </ul>
       <figure><img src="images/changelog/0.13.2-schemes.jpg" alt="The same moment in the game in all twelve colour schemes." loading="lazy"><figcaption>All twelve schemes, same moment in the game</figcaption></figure>
       </div></details>
-      <details class="ver"><summary><span class="vv">0.13.1</span><span class="vd">10 Oct 2026 · browser</span><span class="vt">Interface size</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.1</span></summary>
+      <details class="ver"><summary><span class="vv">0.13.1</span><span class="vd">10 Oct 2026 · browser</span><span class="vt" aria-label="Categories: Accessibility, Screen sizes"><i class="cat">Accessibility</i><i class="cat">Screen sizes</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13.1</span></summary>
       <div class="vb"><ul>
         <li>The game fits your screen. On big monitors (1440p, ultrawide, 4K) everything grows instead of shrinking to tiny text; on small laptops nothing overlaps or gets cut off.</li>
         <li>New <b>Interface size</b> setting (Auto, Larger, Largest) in Settings ⚙.</li>
@@ -234,7 +247,7 @@ dialog.lb button:hover{border-color:var(--sand);}
       </ul>
       <figure><img src="images/changelog/0.13.1-4k.jpg" alt="Before and after on a 4K screen: tiny interface in 0.13, scaled interface in 0.13.1." loading="lazy"><figcaption>Before and after on a 4K screen</figcaption></figure>
       </div></details>
-      <details class="ver"><summary><span class="vv">0.13</span><span class="vd">10 Oct 2026 · all platforms</span><span class="vt">Two-player games over turn codes</span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13</span></summary>
+      <details class="ver"><summary><span class="vv">0.13</span><span class="vd">10 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Two players, Installers, Computer opponent"><i class="cat">Two players</i><i class="cat">Installers</i><i class="cat">Computer opponent</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.13</span></summary>
       <div class="vb"><ul>
         <li>Two-player games over copy-and-paste turn codes, with resume.</li>
         <li>A sharper computer Olvana that concentrates on one area at a time.</li>
@@ -247,7 +260,7 @@ dialog.lb button:hover{border-color:var(--sand);}
   <section>
     <h2>What you do</h2>
     <div class="grid3">
-      <div class="card"><b>ATTACK</b><p>Plant stories, frame the narrative, swarm with bots and rebrand after takedowns to push the other side's dots your way.</p></div>
+      <div class="card"><b>ATTACK</b><p>Plant stories, frame the narrative, swarm with bots and rebrand after takedowns to push the other side's nodes your way.</p></div>
       <div class="card"><b>DEFEND</b><p>Watch for campaigns, prebunk your audiences, correct the record and learn from mistakes before the next crisis tests you.</p></div>
       <div class="card"><b>DECIDE WELL</b><p>Crises in weeks 4, 8, 12 and 16 score each side on how well it can still notice, interpret, decide and act.</p></div>
     </div>
@@ -259,25 +272,25 @@ dialog.lb button:hover{border-color:var(--sand);}
         <p>The Multi-Horizon Cognitive OODA framework, the engagement-effectiveness metric and the disruptive-innovation forecast by Rushing, Xu and colleagues; US Army ATP 3-13.1; and open reporting on cognitive operations. Full credits are in the manual and the in-game guide.</p>
       </div>
       <div>
-        <img class="inline" src="images/preview.jpg" alt="Hovering a dot shows who it is, who holds it, and what the selected move would do there." width="900" height="555" loading="lazy">
-        <p class="cap" style="margin:8px 0 0">Hover any dot to see who it is and what your move would do there.</p>
+        <img class="inline" src="images/preview.jpg" alt="Hovering a node shows who it is, who holds it, and what the selected move would do there." width="900" height="555" loading="lazy">
+        <p class="cap" style="margin:8px 0 0">Hover any node to see who it is and what your move would do there.</p>
       </div>
     </div>
   </section>
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.14.2 for the browser, as one HTML file, and as installers for Windows, Mac and Linux. Two-player codes work between all 0.14 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.15 for the browser, as one HTML file, and as installers for Windows, Mac and Linux. Two-player codes work between all 0.15 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/cognitive-terrain-0.14.2.html">cognitive-terrain-0.14.2.html</a></td><td class="s">2.9 MB</td></tr>
-        <tr><td>Read the rules: the illustrated field manual</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/Cognitive-Terrain-Field-Manual-0.14.2.pdf">Field Manual (PDF)</a></td><td class="s">14 MB</td></tr>
-        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/CognitiveTerrain-0.14.2-Setup.exe">CognitiveTerrain-0.14.2-Setup.exe</a></td><td class="s">8.4 MB</td></tr>
-        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/CognitiveTerrain-0.14.2-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
-        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/CognitiveTerrain-0.14.2-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/CognitiveTerrain-0.14.2-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.2/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/cognitive-terrain-0.15.html">cognitive-terrain-0.15.html</a></td><td class="s">2.9 MB</td></tr>
+        <tr><td>Read the rules: the illustrated field manual</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/Cognitive-Terrain-Field-Manual-0.15.pdf">Field Manual (PDF)</a></td><td class="s">14 MB</td></tr>
+        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-Setup.exe">CognitiveTerrain-0.15-Setup.exe</a></td><td class="s">8.4 MB</td></tr>
+        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
+        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.3 MB</td></tr>
+        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
+        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
       </tbody>
     </table>
     <p class="note" style="margin-top:14px">The installers are not code-signed yet. On Windows choose <b>More info → Run anyway</b>; on a Mac right-click the app and choose <b>Open</b> the first time.</p>
@@ -293,7 +306,7 @@ dialog.lb button:hover{border-color:var(--sand);}
           <li>Olvana: <b>Two players</b>, paste Blue's code, <b>Join as Olvana</b>.</li>
           <li>Keep swapping codes until week 16. Each player's game saves after every code.</li>
         </ol>
-        <p class="note">All 0.14.x versions play together. Any mix of browser, HTML file and installers works.</p>
+        <p class="note">All 0.15.x versions play together. Any mix of browser, HTML file and installers works.</p>
       </div>
       <img class="inline" src="images/turn-codes.jpg" alt="The turn-code window: your code with a copy button, and a box to paste your opponent's reply." width="900" height="683" loading="lazy">
     </div>

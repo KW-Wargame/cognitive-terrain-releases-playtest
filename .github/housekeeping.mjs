@@ -11,7 +11,12 @@ for (const b of cfg.deleteBranches || []) {
   console.log(ok('git', ['push', 'origin', '--delete', b]) ? `deleted branch ${b}` : `branch ${b} already gone`);
 }
 for (const r of cfg.releases) {
-  if (ok('gh', ['release', 'view', r.tag])) { console.log(`${r.tag}: release exists`); continue; }
+  if (ok('gh', ['release', 'view', r.tag])) {
+    // Keep notes and the "latest" flag in step with the files in this repo
+    if (cfg.updateNotes) sh('gh', ['release', 'edit', r.tag, '--notes-file', `.github/release-notes/${r.tag}.md`, `--latest=${r.latest ? 'true' : 'false'}`]);
+    console.log(`${r.tag}: release exists${cfg.updateNotes ? ', notes updated' : ''}`);
+    continue;
+  }
   const sha = sh('git', ['rev-parse', `${r.commit}^{commit}`]);
   if (!ok('git', ['rev-parse', `refs/tags/${r.tag}`])) {
     sh('git', ['tag', r.tag, sha]);

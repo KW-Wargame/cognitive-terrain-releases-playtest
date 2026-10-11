@@ -2,7 +2,9 @@
 
 **Play and download: https://kw-wargame.github.io/cognitive-terrain-releases-playtest/**
 
-An educational, turn-based wargame of cognitive warfare: Blue vs Olvana.
+![A turn of play: Blue strikes Olvana's entry points, then Olvana answers.](images/play.gif)
+
+An educational, turn-based wargame of cognitive warfare: Blue vs Red (Olvana or Donovia).
 
 | | |
 |---|---|

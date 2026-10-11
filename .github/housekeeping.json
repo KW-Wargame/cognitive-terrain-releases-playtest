@@ -1,0 +1,13 @@
+{
+  "deleteBranches": ["review/0.13.3"],
+  "releases": [
+    { "tag": "v0.13.0", "commit": "662bc4b", "files": "downloads/0.13" },
+    { "tag": "v0.13.1", "commit": "05fa99d", "files": "downloads/0.13.1" },
+    { "tag": "v0.13.2", "commit": "4fba6ad", "files": "downloads/0.13.2" },
+    { "tag": "v0.13.3", "commit": "d72d2dc", "files": "downloads/0.13.3" },
+    { "tag": "v0.13.4", "commit": "9d66cfd", "files": "downloads/0.13.4" },
+    { "tag": "v0.13.5", "commit": "b0ffd53", "files": "downloads/0.13.5" },
+    { "tag": "v0.14.0", "commit": "f4d4b8b", "files": "downloads/0.14" },
+    { "tag": "v0.14.1", "commit": "fc5230a0a4c1e0fc58a75b84daf67512c0ce1692", "files": "downloads/0.14.1", "latest": true }
+  ]
+}

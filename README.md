@@ -9,8 +9,8 @@ An educational, turn-based wargame of cognitive warfare: Blue vs Red (Olvana or 
 | | |
 |---|---|
 | Play in your browser | [play/](play/) |
-| Field manual (PDF) | [downloads/0.14/Cognitive-Terrain-Field-Manual-0.14.pdf](downloads/0.14/Cognitive-Terrain-Field-Manual-0.14.pdf) |
-| Game as one HTML file | [downloads/0.14/cognitive-terrain-0.14.html](downloads/0.14/cognitive-terrain-0.14.html) |
-| Installers (0.14) | [downloads/0.14/](downloads/0.14/) |
+| Field manual (PDF) | [manual/Cognitive-Terrain-Field-Manual.pdf](manual/Cognitive-Terrain-Field-Manual.pdf) |
+| Game as one HTML file | [cognitive-terrain-0.14.1.html](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.14.1/cognitive-terrain-0.14.1.html) |
+| Installers and every earlier version | [Releases](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases) |
 
 This repository holds released builds only. © 2026 Kevin Williamson. All rights reserved.

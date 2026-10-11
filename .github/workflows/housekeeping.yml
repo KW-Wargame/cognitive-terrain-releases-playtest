@@ -1,0 +1,20 @@
+name: Housekeeping
+# Creates version tags and releases (see .github/housekeeping.json) whenever
+# that file changes, or on demand from the Actions tab.
+on:
+  push:
+    branches: [main]
+    paths: ['.github/housekeeping.json', '.github/housekeeping.mjs', '.github/release-notes/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  housekeeping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: node .github/housekeeping.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}

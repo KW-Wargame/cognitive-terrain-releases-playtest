@@ -7,8 +7,8 @@ An educational, turn-based wargame of cognitive warfare: Blue vs Olvana.
 | | |
 |---|---|
 | Play in your browser | [play/](play/) |
-| Field manual (PDF) | [downloads/0.13.4/Cognitive-Terrain-Field-Manual-0.13.4.pdf](downloads/0.13.4/Cognitive-Terrain-Field-Manual-0.13.4.pdf) |
-| Game as one HTML file | [downloads/0.13.4/cognitive-terrain-0.13.4.html](downloads/0.13.4/cognitive-terrain-0.13.4.html) |
+| Field manual (PDF) | [downloads/0.13.5/Cognitive-Terrain-Field-Manual-0.13.5.pdf](downloads/0.13.5/Cognitive-Terrain-Field-Manual-0.13.5.pdf) |
+| Game as one HTML file | [downloads/0.13.5/cognitive-terrain-0.13.5.html](downloads/0.13.5/cognitive-terrain-0.13.5.html) |
 | Installers (0.13) | [downloads/0.13/](downloads/0.13/) |
 
 This repository holds released builds only. © 2026 Kevin Williamson. All rights reserved.

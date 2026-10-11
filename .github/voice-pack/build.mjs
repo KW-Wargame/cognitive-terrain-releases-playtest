@@ -27,16 +27,29 @@ const pkgDir = (name, from = here) => {
 };
 const ver = name => JSON.parse(fs.readFileSync(path.join(pkgDir(name), 'package.json'), 'utf8')).version;
 
+// kokoro-js may carry its own copy of transformers.js; use that one everywhere,
+// so the settings made in engine.mjs reach the copy that loads the model.
+const kokoroDir = pkgDir('kokoro-js');
+const tfDir = pkgDir('@huggingface/transformers', kokoroDir);
+const oneTransformers = {
+  name: 'one-transformers',
+  setup(b) {
+    b.onResolve({ filter: /^@huggingface\/transformers$/ }, a => a.pluginData === 'inner' ? undefined
+      : b.resolve(a.path, { resolveDir: kokoroDir, kind: a.kind, pluginData: 'inner' }));
+  }
+};
+const kpj = JSON.parse(fs.readFileSync(path.join(kokoroDir, 'package.json'), 'utf8'));
+console.log('kokoro-js deps', JSON.stringify(kpj.dependencies), 'transformers used', tfDir);
+
 // 1. Bundle the engine (kokoro-js + transformers.js + onnxruntime-web + phonemizer) into one file.
 const res = await build({
   entryPoints: [path.join(here, 'engine.mjs')], bundle: true, format: 'esm', platform: 'browser',
-  target: 'es2022', minify: true, outfile: path.join(pack, 'engine.js'), metafile: true, legalComments: 'none', logLevel: 'warning'
+  target: 'es2022', minify: true, outfile: path.join(pack, 'engine.js'), metafile: true, legalComments: 'none', logLevel: 'warning', plugins: [oneTransformers]
 });
 const js = fs.readFileSync(path.join(pack, 'engine.js'), 'utf8');
-console.log('engine.js', (js.length / 1e6).toFixed(2), 'MB');
+console.log('engine.js', (js.length / 1e6).toFixed(2), 'MB', 'espeak inside:', /espeak/i.test(js), 'transformers copies:', (js.match(/huggingface\/transformers@[\d.]+/g) || []).join(' '));
 
 // 2. The onnxruntime-web files the bundle asks for.
-const tfDir = pkgDir('@huggingface/transformers');
 const ortDir = pkgDir('onnxruntime-web', tfDir);
 const ortVer = JSON.parse(fs.readFileSync(path.join(ortDir, 'package.json'), 'utf8')).version;
 const named = [...new Set(js.match(/ort-wasm[\w.-]*?\.(?:wasm|mjs)/g) || [])];
@@ -89,8 +102,16 @@ for (const p of [...pkgs].sort()) {
   const pj = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
   licences[p] = { version: pj.version, licence: pj.license || '(see file)', repository: (pj.repository && (pj.repository.url || pj.repository)) || '' };
   const lf = fs.readdirSync(dir).find(f => /^(licen[cs]e|copying)(\.|$)/i.test(f));
+  const dst = path.join(pack, 'LICENSES', p.replace('/', '__') + '.txt');
   if (lf) {
-    fs.copyFileSync(path.join(dir, lf), path.join(pack, 'LICENSES', p.replace('/', '__') + '.txt'));
+    fs.copyFileSync(path.join(dir, lf), dst);
+  } else if (pj.license === 'MIT' && p.startsWith('onnxruntime')) {
+    fs.writeFileSync(dst, fs.readFileSync(path.join(here, 'MIT-onnxruntime.txt'), 'utf8'));
+  }
+  for (const x of ['README.md', 'package.json']) {
+    const t = fs.existsSync(path.join(dir, x)) ? fs.readFileSync(path.join(dir, x), 'utf8') : '';
+    const hit = t.split('\n').filter(l => /espeak|gpl/i.test(l)).slice(0, 6);
+    if (hit.length) console.log('licence note', p, x, hit.join(' | '));
   }
   console.log('bundled', p, pj.version, pj.license, lf || '(no licence file)');
 }

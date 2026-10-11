@@ -8,5 +8,6 @@
   "voice": "bf_emma",
   "voiceName": "Emma (UK)",
   "publish": true,
-  "release": "voice-emma-1"
+  "release": "voice-emma-1",
+  "replace": true
 }

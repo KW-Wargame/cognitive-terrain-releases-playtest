@@ -1,4 +1,4 @@
-COGNITIVE TERRAIN · IMMERSIVE EDITION VOICE PACK
+COGNITIVE TERRAIN · IMMERSIVE BRIEFINGS VOICE PACK
 ================================================
 
 This is an optional add-on. The game is complete without it.
@@ -9,7 +9,7 @@ it is generated on your own computer by an open-source text-to-speech model.
 Nothing is sent over the internet.
 
 HOW TO INSTALL
-  Web or browser version: open the game, then Settings (gear) > Narration >
+  Web or browser version: open the game, then Settings (gear) > Immersive Briefings >
   "Load voice pack..." and choose this zip file. You only do this once per
   browser.
   Windows, macOS and Linux downloads: put this zip file next to the game
@@ -20,7 +20,7 @@ HOW TO INSTALL
   unzipped files together in the same window.
 
 HOW TO REMOVE
-  Settings > Narration > "Remove voice pack".
+  Settings > Immersive Briefings > "Remove voice pack".
 
 WHAT IS INSIDE
   Model: Kokoro-82M by hexgrad, ONNX export by onnx-community,

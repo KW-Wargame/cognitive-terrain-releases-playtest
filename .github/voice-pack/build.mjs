@@ -147,7 +147,7 @@ const walk = d => fs.readdirSync(path.join(pack, d)).sort().forEach(f => {
 });
 walk('');
 const manifest = {
-  format: 1, id: cfg.id, title: 'Cognitive Terrain · Immersive Edition voice pack', voice: cfg.voice, voiceName: cfg.voiceName,
+  format: 1, id: cfg.id, title: 'Cognitive Terrain · Immersive Briefings voice pack', voice: cfg.voice, voiceName: cfg.voiceName,
   engine: 'engine.js', model: { id: cfg.model, revision: rev, dtype: cfg.dtype }, ort,
   versions: { 'kokoro-js': ver('kokoro-js'), '@huggingface/transformers': ver('@huggingface/transformers'), 'onnxruntime-web': ortVer },
   files

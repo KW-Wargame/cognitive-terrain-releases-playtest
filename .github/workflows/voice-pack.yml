@@ -1,5 +1,5 @@
 name: Voice pack
-# Builds the optional Immersive Edition voice pack (CognitiveTerrain-Voice-Emma.zip),
+# Builds the optional Immersive Briefings voice pack (CognitiveTerrain-Voice-Emma.zip),
 # checks that it speaks with the network switched off, and, when
 # .github/voice-pack/pack.json says "publish": true, attaches it to its own release.
 on:
@@ -51,7 +51,15 @@ jobs:
           TAG=$(node -p "require('./pack.json').release")
           ZIP=$(node -p "require('./pack.json').zip")
           if [ "$PUB" != "true" ]; then echo "publish is off"; exit 0; fi
-          if gh release view "$TAG" >/dev/null 2>&1; then echo "$TAG already published; bump the id to publish a new pack"; exit 0; fi
+          REPLACE=$(node -p "require('./pack.json').replace === true")
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            if [ "$REPLACE" = "true" ]; then
+              # Only before a game build depends on it: swap the unreleased pack for the rebuilt one.
+              gh release delete "$TAG" --yes --cleanup-tag
+            else
+              echo "$TAG already published; bump the id to publish a new pack"; exit 0
+            fi
+          fi
           cp out/summary.json out/voice-pack-summary.json
-          gh release create "$TAG" "out/$ZIP" out/voice-pack-sources.tar.gz out/voice-pack-summary.json --title "Immersive Edition voice pack (Emma, UK)" \
+          gh release create "$TAG" "out/$ZIP" out/voice-pack-sources.tar.gz out/voice-pack-summary.json --title "Immersive Briefings voice pack (Emma, UK)" \
             --notes-file release-notes.md --latest=false

@@ -25,7 +25,7 @@ window.prepare = async () => {
   return Object.keys(files).length;
 };
 window.run = (texts) => new Promise(resolve => {
-  const w = new Worker(URL.createObjectURL(new Blob([WORKER], { type: 'text/javascript' })), { type: 'module' });
+  const w = new Worker(URL.createObjectURL(new Blob([WORKER], { type: 'text/javascript' })));
   const log = [];
   w.onmessage = e => {
     log.push(e.data);

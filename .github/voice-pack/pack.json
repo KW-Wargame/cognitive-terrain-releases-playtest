@@ -2,11 +2,11 @@
   "id": "voice-emma-1",
   "zip": "CognitiveTerrain-Voice-Emma.zip",
   "model": "onnx-community/Kokoro-82M-v1.0-ONNX",
-  "revision": "",
+  "revision": "1939ad2a8e416c0acfeecc08a694d14ef25f2231",
   "onnx": "model_quantized.onnx",
   "dtype": "q8",
   "voice": "bf_emma",
   "voiceName": "Emma (UK)",
-  "publish": false,
+  "publish": true,
   "release": "voice-emma-1"
 }

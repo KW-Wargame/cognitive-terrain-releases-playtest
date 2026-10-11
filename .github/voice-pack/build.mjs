@@ -120,6 +120,12 @@ for (const p of [...pkgs].sort()) {
 }
 const apache = fs.readdirSync(path.join(pack, 'LICENSES')).find(f => f.startsWith('kokoro-js'));
 fs.copyFileSync(apache ? path.join(pack, 'LICENSES', apache) : path.join(here, 'APACHE-2.0.txt'), path.join(pack, 'LICENSES', 'Kokoro-82M-model.txt'));
+// phonemizer includes eSpeak NG (GPL-3.0-or-later) compiled to WebAssembly.
+const gpl = await fetch('https://raw.githubusercontent.com/espeak-ng/espeak-ng/master/COPYING');
+if (!gpl.ok) {
+  throw new Error('could not fetch the eSpeak NG licence');
+}
+fs.writeFileSync(path.join(pack, 'LICENSES', 'eSpeak-NG-GPL-3.0.txt'), await gpl.text());
 for (const extra of cfg.extraLicences || []) {
   fs.copyFileSync(path.join(here, extra.file), path.join(pack, 'LICENSES', extra.as));
 }

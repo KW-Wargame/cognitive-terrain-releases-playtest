@@ -27,6 +27,10 @@ WHAT IS INSIDE
   {{MODEL}}. Licence: Apache 2.0.
   Speech engine, built from these open-source packages:
 {{PACKAGES}}
+  The pronunciation step uses eSpeak NG, which is licensed under the GNU
+  General Public License v3 (or later); the pack as a whole is offered on
+  those terms. Its source code is published alongside this download, as
+  voice-pack-sources.tar.gz on the same release page.
   Full licence texts are in the LICENSES folder. manifest.json lists every
   file with its SHA-256 fingerprint; the game checks them before it uses
   the pack.

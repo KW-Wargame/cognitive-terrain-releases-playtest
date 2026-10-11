@@ -98,10 +98,21 @@ dialog.lb .lbbar{display:flex;align-items:center;gap:12px;padding:10px 14px;bord
 dialog.lb .lbbar span{flex:1;}
 dialog.lb button{font:inherit;color:var(--sand);background:none;border:1px solid var(--line2);padding:6px 12px;cursor:pointer;min-width:44px;min-height:36px;}
 dialog.lb button:hover{border-color:var(--sand);}
+.topr{display:flex;align-items:center;gap:14px;}
+.mus{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--sand);background:none;
+  border:1px solid var(--line2);padding:6px 10px;min-height:36px;cursor:pointer;text-transform:uppercase;white-space:nowrap;}
+.mus:hover,.mus:focus-visible{border-color:var(--sand);outline:none;}
+.mus .eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;}
+.mus .eq i{display:block;width:2px;background:var(--sand);height:3px;}
+.mus.on .eq i{animation:eq 1.2s ease-in-out infinite;}
+.mus.on .eq i:nth-child(2){animation-delay:-.4s;}.mus.on .eq i:nth-child(3){animation-delay:-.8s;}
+@keyframes eq{0%,100%{height:3px}50%{height:12px}}
+@media (prefers-reduced-motion:reduce){.mus.on .eq i{animation:none;height:8px;}}
+@media (max-width:560px){.tag{display:none;}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><span class="tag">PLAYTEST BUILD 0.14</span></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.14</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
@@ -285,6 +296,75 @@ dialog.lb button:hover{border-color:var(--sand);}
   lb.addEventListener('click',function(e){if(e.target===lb){lb.close();}});
   lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){show(cur-1);}else if(e.key==='ArrowRight'){show(cur+1);}});
   lb.addEventListener('close',function(){var im=imgs[cur];if(im){im.focus();}});
+})();
+</script>
+<script>
+/* Music: the game's main theme, Night Watch. It starts on arrival where the
+   browser allows it, otherwise at the visitor's first click or key press.
+   The button turns it off, and the choice is remembered. */
+(function(){
+  var KEY='ct-site-music', SRC='audio/night-watch.mp3', VOL=0.35;
+  var btn=document.getElementById('mus'), lab=document.getElementById('musL');
+  var AC=window.AudioContext||window.webkitAudioContext, ctx=null, gain=null, src=null, el=null, loading=null, playing=false;
+  function pref(){try{return localStorage.getItem(KEY)!=='off';}catch(e){return true;}}
+  function save(on){try{localStorage.setItem(KEY,on?'on':'off');}catch(e){}}
+  function ui(){btn.classList.toggle('on',playing);btn.setAttribute('aria-pressed',playing?'true':'false');lab.textContent=playing?'Music on':'Music off';}
+  function load(){
+    if(loading){return loading;}
+    if(AC){
+      try{ctx=new AC();}catch(e){ctx=null;}
+    }
+    if(ctx){
+      gain=ctx.createGain();gain.gain.value=0;gain.connect(ctx.destination);
+      loading=fetch(SRC).then(function(r){return r.arrayBuffer();}).then(function(b){
+        return new Promise(function(ok,no){ctx.decodeAudioData(b,ok,no);});
+      }).then(function(buf){
+        src=ctx.createBufferSource();src.buffer=buf;src.loop=true;src.connect(gain);src.start();
+      });
+    }else{
+      el=new Audio(SRC);el.loop=true;el.volume=0;loading=Promise.resolve();
+    }
+    return loading;
+  }
+  function fade(to,secs){
+    if(ctx){var t=ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(to,t+secs);}
+    else if(el){el.volume=to;}
+  }
+  function play(){
+    return load().then(function(){
+      var p=ctx?ctx.resume():el.play();
+      return Promise.resolve(p).then(function(){
+        if(ctx&&ctx.state!=='running'){throw new Error('blocked');}
+        playing=true;fade(VOL,3);ui();
+      });
+    });
+  }
+  function stop(){
+    playing=false;ui();
+    if(ctx){fade(0,0.6);setTimeout(function(){if(!playing){ctx.suspend();}},700);}
+    else if(el){el.pause();}
+  }
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(playing){stop();save(false);}else{save(true);play().catch(function(){});}
+  });
+  function unlock(e){
+    if(e&&e.target&&btn.contains(e.target)){return;}
+    removeEventListener('pointerdown',unlock,true);removeEventListener('keydown',unlock,true);
+    if(!playing&&pref()){play().catch(function(){});}
+  }
+  if(pref()){
+    play().then(function(){
+      removeEventListener('pointerdown',unlock,true);removeEventListener('keydown',unlock,true);
+    }).catch(function(){});
+    addEventListener('pointerdown',unlock,true);addEventListener('keydown',unlock,true);
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(!playing){return;}
+    if(ctx){document.hidden?ctx.suspend():ctx.resume();}
+    else if(el){document.hidden?el.pause():el.play();}
+  });
+  ui();
 })();
 </script>
 </body>

@@ -9,5 +9,5 @@
   "voiceName": "Emma (UK)",
   "publish": true,
   "release": "voice-emma-1",
-  "replace": true
+  "replace": false
 }

@@ -31,15 +31,18 @@ const ver = name => JSON.parse(fs.readFileSync(path.join(pkgDir(name), 'package.
 // so the settings made in engine.mjs reach the copy that loads the model.
 const kokoroDir = pkgDir('kokoro-js');
 const tfDir = pkgDir('@huggingface/transformers', kokoroDir);
+const kpj = JSON.parse(fs.readFileSync(path.join(kokoroDir, 'package.json'), 'utf8'));
+console.log('kokoro-js', JSON.stringify({ main: kpj.main, module: kpj.module, browser: kpj.browser, exports: kpj.exports, deps: kpj.dependencies }), fs.readdirSync(path.join(kokoroDir, 'dist')).join(' '));
 const oneTransformers = {
   name: 'one-transformers',
   setup(b) {
+    // kokoro-js's browser file has its own copy of transformers.js built in; use its plain module instead.
+    b.onResolve({ filter: /^kokoro-js$/ }, () => ({ path: path.join(kokoroDir, kpj.module || kpj.main) }));
     b.onResolve({ filter: /^@huggingface\/transformers$/ }, a => a.pluginData === 'inner' ? undefined
       : b.resolve(a.path, { resolveDir: kokoroDir, kind: a.kind, pluginData: 'inner' }));
   }
 };
-const kpj = JSON.parse(fs.readFileSync(path.join(kokoroDir, 'package.json'), 'utf8'));
-console.log('kokoro-js deps', JSON.stringify(kpj.dependencies), 'transformers used', tfDir);
+
 
 // 1. Bundle the engine (kokoro-js + transformers.js + onnxruntime-web + phonemizer) into one file.
 const res = await build({
@@ -47,7 +50,7 @@ const res = await build({
   target: 'es2022', minify: true, outfile: path.join(pack, 'engine.js'), metafile: true, legalComments: 'none', logLevel: 'warning', plugins: [oneTransformers]
 });
 const js = fs.readFileSync(path.join(pack, 'engine.js'), 'utf8');
-console.log('engine.js', (js.length / 1e6).toFixed(2), 'MB', 'espeak inside:', /espeak/i.test(js), 'transformers copies:', (js.match(/huggingface\/transformers@[\d.]+/g) || []).join(' '));
+console.log('engine.js', (js.length / 1e6).toFixed(2), 'MB', 'espeak inside:', /espeak/i.test(js), 'versions seen:', [...new Set(js.match(/\b3\.\d+\.\d+\b/g) || [])].slice(0, 12).join(' '));
 
 // 2. The onnxruntime-web files the bundle asks for.
 const ortDir = pkgDir('onnxruntime-web', tfDir);

@@ -180,6 +180,7 @@ dialog.lb button:hover{border-color:var(--sand);}
       <dt>0.16.1<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
       <dd><ul>
         <li><b>Quick reference card, with the game's icons.</b> The cut-out card at the back of the Field Manual (and the last page of the in-game Guide) now uses the same icons as the game. Every card and area has its icon, and a new map legend covers entry points, contested and leadership nodes, nodes under pressure, the watched, prebunked and framed status icons, coverage outlines, this week's orders and the ON AIR tab. Donovia's Show of Force is listed too.</li>
+        <li><b>Practitioner's Manual, easier to read.</b> The design notes are now colour-coded cards. Each has an icon, a "how I got there" line, and tags that separate what comes from the research from the designer's assumptions. A new two-page section, <b>The math</b>, sets out every formula with worked examples: Decision Health, crises, the spread score, odds of failure, the weekly budget, and how far to trust a balance check.</li>
         <li>No rule changes: two-player codes between 0.16 builds still work. 0.16's Immersive Briefings and the two manuals are below.</li>
       </ul>
       <figure><img src="images/changelog/0.16.1-quickref.jpg" alt="The Field Manual's quick reference card: each card with its icon, key, cost and effect; each area with its icon and what losing it does; and a legend of the map's symbols and status icons." loading="lazy"><figcaption>The quick reference card (Field Manual page 28)</figcaption></figure>
@@ -334,7 +335,7 @@ dialog.lb button:hover{border-color:var(--sand);}
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
         <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.1/cognitive-terrain-0.16.1.html">cognitive-terrain-0.16.1.html</a></td><td class="s">2.8 MB</td></tr>
-        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option></select></td><td class="f"><a id="manLink" href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.1/Cognitive-Terrain-Field-Manual-0.16.1.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">13 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">13 MB</td></tr>
         <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.1/CognitiveTerrain-0.16.1-Setup.exe">CognitiveTerrain-0.16.1-Setup.exe</a></td><td class="s">8.5 MB</td></tr>
         <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.1/CognitiveTerrain-0.16.1-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.1 MB</td></tr>
         <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.1/CognitiveTerrain-0.16.1-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.2 MB</td></tr>
@@ -475,8 +476,8 @@ dialog.lb button:hover{border-color:var(--sand);}
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
   var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.1/';
-  var M = { f: ['Cognitive-Terrain-Field-Manual-0.16.1.pdf', 'Field Manual (PDF)', '13 MB'], p: ['Cognitive-Terrain-Practitioners-Manual-0.16.1.pdf', "Practitioner's Manual (PDF)", '3.5 MB'] };
-  if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = R + m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '13 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '3.6 MB'] };
+  if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>
 </body>

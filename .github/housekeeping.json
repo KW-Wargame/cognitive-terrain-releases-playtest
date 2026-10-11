@@ -81,11 +81,16 @@
     {
       "tag": "v0.17.1",
       "commit": "e4a077dece888e3b83aa8728e273dc32c2215661",
-      "files": "downloads/0.17.1",
+      "files": "downloads/0.17.1"
+    },
+    {
+      "tag": "v0.17.2",
+      "commit": "8d9ad725cf0a167c40a695cb0ef67a17d5b130cc",
+      "files": "downloads/0.17.2",
       "latest": true
     }
   ],
-  "updateNotes": false,
+  "updateNotes": true,
   "moveTags": false,
   "note": "Version tags and old branches are kept in step by the Housekeeping workflow."
 }

@@ -7,7 +7,7 @@ An educational, turn-based wargame of cognitive warfare: Blue vs Olvana.
 | | |
 |---|---|
 | Play in your browser | [play/](play/) |
-| Field manual (PDF) | [downloads/0.13/Cognitive-Terrain-Field-Manual-0.13.pdf](downloads/0.13/Cognitive-Terrain-Field-Manual-0.13.pdf) |
+| Field manual (PDF) | [downloads/0.13.3/Cognitive-Terrain-Field-Manual-0.13.3.pdf](downloads/0.13.3/Cognitive-Terrain-Field-Manual-0.13.3.pdf) |
 | Game as one HTML file | [downloads/0.13.3/cognitive-terrain-0.13.3.html](downloads/0.13.3/cognitive-terrain-0.13.3.html) |
 | Installers (0.13) | [downloads/0.13/](downloads/0.13/) |
 

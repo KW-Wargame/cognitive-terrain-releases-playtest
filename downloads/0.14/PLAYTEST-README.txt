@@ -1,15 +1,15 @@
-COGNITIVE TERRAIN · PLAYTEST BUILD 0.13
+COGNITIVE TERRAIN · PLAYTEST BUILD 0.14
 
 Thanks for playtesting. Pick ONE of the options below.
 
-WINDOWS 10/11 (CognitiveTerrain-0.13-Setup.exe)
+WINDOWS 10/11 (CognitiveTerrain-0.14-Setup.exe)
   1. Double-click the file. Windows may say "Windows protected your PC" because the
      build is not code-signed yet: click "More info", then "Run anyway".
   2. The game installs itself (no admin rights needed), adds "Cognitive Terrain" to the
      Start Menu and Desktop, and opens in its own window.
   3. To remove it: Start Menu > "Uninstall Cognitive Terrain".
 
-MAC (CognitiveTerrain-0.13-macOS-AppleSilicon.zip for M1/M2/M3/M4, -Intel.zip for older Macs)
+MAC (CognitiveTerrain-0.14-macOS-AppleSilicon.zip for M1/M2/M3/M4, -Intel.zip for older Macs)
   1. Unzip and drag "Cognitive Terrain" into Applications.
   2. First launch: right-click the app > Open > Open. If macOS says it is damaged or
      cannot be verified, open Terminal and run:
@@ -17,10 +17,10 @@ MAC (CognitiveTerrain-0.13-macOS-AppleSilicon.zip for M1/M2/M3/M4, -Intel.zip fo
      then open it again.
   3. Opens in Chrome or Edge as an app window if you have one, otherwise in Safari.
 
-LINUX (CognitiveTerrain-0.13-Linux.tar.gz)
-  tar xzf CognitiveTerrain-0.13-Linux.tar.gz && ./cognitive-terrain-0.13-linux/cognitive-terrain
+LINUX (CognitiveTerrain-0.14-Linux.tar.gz)
+  tar xzf CognitiveTerrain-0.14-Linux.tar.gz && ./cognitive-terrain-0.14-linux/cognitive-terrain
 
-ANY COMPUTER (cognitive-terrain-playtest-0.13.html)
+ANY COMPUTER (cognitive-terrain-playtest-0.14.html)
   Double-click the HTML file. It opens in your browser. Nothing to install.
 
 TWO PLAYERS

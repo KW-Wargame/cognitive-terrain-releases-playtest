@@ -5,7 +5,6 @@
 import { build } from 'esbuild';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -14,8 +13,18 @@ const cfg = JSON.parse(fs.readFileSync(path.join(here, 'pack.json'), 'utf8'));
 const out = path.join(here, 'out'), pack = path.join(out, 'pack');
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(pack, { recursive: true });
-const req = createRequire(path.join(here, 'package.json'));
-const pkgDir = name => path.dirname(req.resolve(name + '/package.json'));
+// Package folders (some packages do not export package.json, so look on disk).
+const pkgDir = (name, from = here) => {
+  for (let d = from; ; d = path.dirname(d)) {
+    const c = path.join(d, 'node_modules', name);
+    if (fs.existsSync(path.join(c, 'package.json'))) {
+      return c;
+    }
+    if (d === path.dirname(d)) {
+      throw new Error('package not found: ' + name);
+    }
+  }
+};
 const ver = name => JSON.parse(fs.readFileSync(path.join(pkgDir(name), 'package.json'), 'utf8')).version;
 
 // 1. Bundle the engine (kokoro-js + transformers.js + onnxruntime-web + phonemizer) into one file.
@@ -27,8 +36,8 @@ const js = fs.readFileSync(path.join(pack, 'engine.js'), 'utf8');
 console.log('engine.js', (js.length / 1e6).toFixed(2), 'MB');
 
 // 2. The onnxruntime-web files the bundle asks for.
-const tfReq = createRequire(path.join(pkgDir('@huggingface/transformers'), 'package.json'));
-const ortDir = path.dirname(tfReq.resolve('onnxruntime-web/package.json'));
+const tfDir = pkgDir('@huggingface/transformers');
+const ortDir = pkgDir('onnxruntime-web', tfDir);
 const ortVer = JSON.parse(fs.readFileSync(path.join(ortDir, 'package.json'), 'utf8')).version;
 const named = [...new Set(js.match(/ort-wasm[\w.-]*?\.(?:wasm|mjs)/g) || [])];
 console.log('onnxruntime-web', ortVer, 'names in bundle:', named.join(', ') || '(none)');
@@ -76,8 +85,7 @@ for (const f of Object.keys(res.metafile.inputs)) {
 fs.mkdirSync(path.join(pack, 'LICENSES'));
 const licences = {};
 for (const p of [...pkgs].sort()) {
-  let dir;
-  try { dir = path.dirname(tfReq.resolve(p + '/package.json')); } catch { dir = pkgDir(p); }
+  const dir = pkgDir(p, tfDir);
   const pj = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
   licences[p] = { version: pj.version, licence: pj.license || '(see file)', repository: (pj.repository && (pj.repository.url || pj.repository)) || '' };
   const lf = fs.readdirSync(dir).find(f => /^(licen[cs]e|copying)(\.|$)/i.test(f));

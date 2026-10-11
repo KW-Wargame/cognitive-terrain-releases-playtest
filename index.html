@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.15.1">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.16">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
 <meta property="og:image" content="images/board.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,21 @@ h1 em{font-style:normal;color:var(--sand);}
 .btn:hover{background:rgba(216,198,156,.08);}
 .btn.primary{background:var(--sand);color:#121314;font-weight:600;}
 .btn.primary:hover{background:#e6d7b2;}
+/* Manual chooser: looks like the other buttons, opens a short menu */
+.dd{position:relative;}
+.dd summary{list-style:none;cursor:pointer;}
+.dd summary::-webkit-details-marker{display:none;}
+.dd summary:focus-visible,.dd .menu a:focus-visible,.mansel:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+.dd .car{transition:transform .15s;}
+.dd[open] .car{transform:rotate(180deg);}
+.dd .menu{position:absolute;top:calc(100% + 6px);left:0;z-index:5;min-width:100%;width:max-content;max-width:min(380px,calc(100vw - 40px));background:var(--panel);border:1px solid var(--sand);display:grid;}
+.dd .menu a{display:block;padding:12px 16px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);}
+.dd .menu a:last-child{border-bottom:0;}
+.dd .menu a:hover{background:rgba(216,198,156,.08);}
+.dd .menu b{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);font-weight:500;}
+.dd .menu small{display:block;font-size:13px;color:var(--dim);line-height:1.4;margin-top:2px;}
+.mansel{display:block;width:100%;max-width:340px;min-width:0;margin:6px 0 0;background:var(--panel);color:var(--ink);border:1px solid var(--line2);font:inherit;font-size:14px;padding:6px 8px;}
+@media (prefers-reduced-motion:reduce){.dd .car{transition:none;}}
 .note{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.04em;}
 .shot{margin:36px 0 8px;border:1px solid var(--line2);display:block;width:100%;height:auto;}
 .cap{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 48px;}
@@ -110,6 +125,8 @@ dialog.lb button:hover{border-color:var(--sand);}
 @media (prefers-reduced-motion:reduce){.mus.on .eq i{animation:none;height:8px;}}
 @media (max-width:560px){.tag{display:none;}}
 .dn{margin:14px 0 0;padding:12px 16px;border-left:2px solid var(--sand);background:var(--panel);font-style:italic;color:#dfe3e7;}
+.opt{margin:0 0 10px;padding:10px 14px;border:1px solid var(--sand);color:#dfe3e7;}
+.opt b{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--sand);margin-right:10px;font-weight:500;}
 .dn b{display:block;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--sand);margin-bottom:4px;font-weight:500;}
 .log dt .latest{display:inline-block;margin-top:8px;font-size:10px;letter-spacing:.22em;color:#121314;background:var(--sand);padding:2px 7px;font-weight:600;}
 .vh{margin:34px 0 10px;}
@@ -135,37 +152,56 @@ dialog.lb button:hover{border-color:var(--sand);}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.15.1</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.16</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.15.1</b> Two players against Donovia, plus 0.15's harder Veteran, node status icons and orders queue. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.16</b> Immersive Briefings: an optional setting with a free voice pack that reads each week aloud, told by the side that is winning. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
     <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
     <div class="ctas">
       <a class="btn primary" href="play/">Play in your browser ▸</a>
-      <a class="btn" href="manual/Cognitive-Terrain-Field-Manual.pdf">Read the manual (PDF)</a>
+      <details class="dd" id="manDD"><summary class="btn">Read the manual (PDF) <span class="car" aria-hidden="true">▾</span></summary>
+        <div class="menu" role="list">
+          <a role="listitem" href="manual/Cognitive-Terrain-Field-Manual.pdf"><b>Field Manual</b><small>For players: how to play, every screen and move</small></a>
+          <a role="listitem" href="manual/Cognitive-Terrain-Practitioners-Manual.pdf"><b>Practitioner's Manual</b><small>For facilitators: sessions, debrief, campaign editor, design notes</small></a>
+        </div></details>
       <a class="btn" href="#downloads">All downloads</a>
     </div>
     <p class="note">No account, no install. Works on any computer with a modern browser. Your progress stays on your own machine.</p>
-    <picture><source srcset="images/board.jpg" media="(prefers-reduced-motion: reduce)"><img class="shot" src="images/play.gif" alt="A turn of play: Blue plants a story on Olvana's News Media and swarms its Social Media, then Olvana answers and its moves light up on Blue's map." width="960" height="600"></picture>
-    <p class="cap">A turn in Typhoon Ines: Blue strikes two of Olvana's entry points, then Olvana answers. (A still picture shows instead if your device asks for reduced motion.)</p>
+    <picture><source srcset="images/board.jpg" media="(prefers-reduced-motion: reduce)"><img class="shot" src="images/play.gif" alt="A turn of play: Blue picks a move, previews it on one of Olvana's entry points and strikes, then Olvana answers and its moves light up on Blue's map with a card for each." width="960" height="600"></picture>
+    <p class="cap">A turn in Typhoon Ines: Blue strikes Olvana's entry points, then Olvana answers. (A still picture shows instead if your device asks for reduced motion.)</p>
   </div>
 
   <section id="whats-new">
     <h2>What's new</h2>
     <dl class="log">
-      <dt>0.15.1<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
-      <dd><ul>
-        <li><b>Two players against Donovia.</b> The two-player screen no longer assumes Olvana. You join as Red, and Blue's first code tells your game which campaign and which opponent you are playing.</li>
-        <li><b>Stories name the right opponent.</b> A few of Blue's story lines still said "Olvana" in Donovia games. They now name the opponent you are actually facing.</li>
-        <li>No rule changes: two-player codes between 0.15 builds still work.</li>
+      <dt>0.16<small>11 Oct 2026 · all platforms · Immersive Briefings · two manuals</small><span class="latest">LATEST</span></dt>
+      <dd>
+      <p class="opt"><b>OPTIONAL</b>Immersive Briefings is an optional setting that needs a free voice pack, downloaded separately. The game is complete without it, and nothing changes unless you load it.</p>
+      <ul>
+        <li><b>Immersive Briefings · hear the week.</b> With the voice pack loaded, the week in review opens with a short broadcast, read aloud. The broadcaster is whichever side is ahead on Decision Health: Blue Public Broadcast, Olvana Central Television or Donovia First.</li>
+        <li><b>Built from your week.</b> Each broadcast uses that week's real moves: the leader's best story, the other side's failures, areas won or lost, and the crisis ahead. The words appear as captions while it plays.</li>
+        <li><b>On your computer, offline.</b> The voice ("Emma, UK") is synthetic speech, made on your own computer by an open-source model. Nothing is sent anywhere. The game checks every file in the pack before using it.</li>
+        <li><b>How to add it.</b> Download the voice pack below (117 MB), then Settings › Immersive Briefings › <b>Load voice pack…</b>. With an installer, you can instead put the zip beside the game before you start it. You can turn it off or remove it at any time.</li>
+        <li><b>It plays on.</b> Continue whenever you like: the broadcast carries on into the next week, with a small ON AIR tab to stop it.</li>
+        <li><b>Two manuals.</b> The <b>Field Manual</b> now holds only what a player needs, plus a new page 20 on Immersive Briefings. The new <b>Practitioner's Manual</b> is for facilitators and instructors. It covers running a session, choosing campaigns, leading the debrief, the campaign editor and setting up the room. It ends with design notes on how each mechanic works and why. Pick either one from <b>Read the manual</b> above.</li>
+        <li>No rule changes. Two-player codes work between 0.16 builds.</li>
       </ul>
+      <figure><img src="images/changelog/0.16-broadcast.jpg" alt="The week in review with an ON AIR strip at the top: Blue Public Broadcast's short report on the week, with the sentence being read highlighted like a caption." loading="lazy"><figcaption>The broadcast at the top of the week in review, with the line being read lit as a caption</figcaption></figure>
+      <p class="dn"><b>DESIGNER'S NOTE</b>Cognitive warfare is a contest of narratives, and every week in this game happens twice: once on the board, and once in how each side tells it. Immersive Briefings let you hear that second version. When you are winning, you hear your own side's calm account. When you are losing, you hear the other side's broadcaster telling your public that its leaders cannot decide, built from the moves you just watched. I made it optional on purpose. The base game has to stay small, quiet and offline for the classrooms, exercise rooms and locked-down networks where it is played. The voice is for players who want the war of narratives in their ears as well as on the map.</p>
+      <p><a class="btn" href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">Get the voice pack (optional, 117 MB)</a></p>
       </dd>
     </dl>
     <h3 class="vh">Earlier versions</h3>
     <div class="vers">
+      <details class="ver"><summary><span class="vv">0.15.1</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Two players, Story"><i class="cat">Two players</i><i class="cat">Story</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.15.1</span></summary>
+      <div class="vb"><ul>
+        <li><b>Two players against Donovia.</b> The two-player screen no longer assumes Olvana. You join as Red, and Blue's first code tells your game which campaign and which opponent you are playing.</li>
+        <li><b>Stories name the right opponent.</b> A few of Blue's story lines still said "Olvana" in Donovia games. They now name the opponent you are actually facing.</li>
+        <li>No rule changes: two-player codes between 0.15 builds still work.</li>
+      </ul></div></details>
       <details class="ver"><summary><span class="vv">0.15</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Balance, Interface, Story, Terminology"><i class="cat">Balance</i><i class="cat">Interface</i><i class="cat">Story</i><i class="cat">Terminology</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.15</span></summary>
       <div class="vb"><ul>
         <li><b>A much harder Veteran.</b> On Veteran, Olvana and Donovia now plan two moves ahead: they try their best options, let the week play out, and keep the move that leaves them best placed for the next crisis. They play fair: no extra budget, no hidden information, and their trial runs never peek at the game's own dice. Recruit and Standard are unchanged.</li>
@@ -286,17 +322,18 @@ dialog.lb button:hover{border-color:var(--sand);}
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.15.1 for the browser, as one HTML file, and as installers for Windows, Mac and Linux. Two-player codes work between all 0.15 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.16 for the browser, as one HTML file, and as installers for Windows, Mac and Linux, with the Field Manual for players and the Practitioner's Manual for facilitators. Two-player codes work between all 0.16 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/cognitive-terrain-0.15.1.html">cognitive-terrain-0.15.1.html</a></td><td class="s">2.9 MB</td></tr>
-        <tr><td>Read the rules: the illustrated field manual</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/Cognitive-Terrain-Field-Manual-0.15.1.pdf">Field Manual (PDF)</a></td><td class="s">14 MB</td></tr>
-        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-Setup.exe">CognitiveTerrain-0.15.1-Setup.exe</a></td><td class="s">8.4 MB</td></tr>
-        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
-        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/cognitive-terrain-0.16.html">cognitive-terrain-0.16.html</a></td><td class="s">2.8 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option></select></td><td class="f"><a id="manLink" href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/Cognitive-Terrain-Field-Manual-0.16.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">13 MB</td></tr>
+        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/CognitiveTerrain-0.16-Setup.exe">CognitiveTerrain-0.16-Setup.exe</a></td><td class="s">8.5 MB</td></tr>
+        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/CognitiveTerrain-0.16-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.1 MB</td></tr>
+        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/CognitiveTerrain-0.16-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.2 MB</td></tr>
+        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/CognitiveTerrain-0.16-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.2 MB</td></tr>
+        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
+        <tr><td>Optional: Immersive Briefings voice pack (put it beside an installed game, or load it in Settings)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">CognitiveTerrain-Voice-Emma.zip</a></td><td class="s">117 MB</td></tr>
       </tbody>
     </table>
     <p class="note" style="margin-top:14px">The installers are not code-signed yet. On Windows choose <b>More info → Run anyway</b>; on a Mac right-click the app and choose <b>Open</b> the first time.</p>
@@ -309,10 +346,10 @@ dialog.lb button:hover{border-color:var(--sand);}
         <p>Two-player games need no server and no account. Each turn ends with a short code you send any way you like: email, chat, Teams, even a file on a USB stick.</p>
         <ol>
           <li>Blue: <b>Two players → New game as Blue</b>, play a turn, press <b>End turn</b> and copy the code.</li>
-          <li>Olvana: <b>Two players</b>, paste Blue's code, <b>Join as Olvana</b>.</li>
+          <li>Red (Olvana or Donovia, set by the campaign): <b>Two players</b>, paste Blue's code, <b>Join as Red</b>.</li>
           <li>Keep swapping codes until week 16. Each player's game saves after every code.</li>
         </ol>
-        <p class="note">All 0.15.x versions play together. Any mix of browser, HTML file and installers works.</p>
+        <p class="note">All 0.16.x versions play together. Any mix of browser, HTML file and installers works.</p>
       </div>
       <img class="inline" src="images/turn-codes.jpg" alt="The turn-code window: your code with a copy button, and a box to paste your opponent's reply." width="900" height="683" loading="lazy">
     </div>
@@ -326,7 +363,7 @@ dialog.lb button:hover{border-color:var(--sand);}
 
 <footer><div class="wrap">
   <p>© 2026 Kevin Williamson. All rights reserved. Cognitive Terrain is an independent educational project.</p>
-  <p>Adapts research by Rushing, Hersch, Umeokolo &amp; Xu under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (<a href="https://arxiv.org/abs/2603.05222">2603.05222</a>, <a href="https://arxiv.org/abs/2510.15805">2510.15805</a>, <a href="https://arxiv.org/abs/2510.15801">2510.15801</a>); the authors have not reviewed or endorsed this game. Olvana is the opposing force from the US Army's ODIN DATE training environment. All scenarios, places and events are original fiction.</p>
+  <p>Adapts research by Rushing, Hersch, Umeokolo &amp; Xu under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (<a href="https://arxiv.org/abs/2603.05222">2603.05222</a>, <a href="https://arxiv.org/abs/2510.15805">2510.15805</a>, <a href="https://arxiv.org/abs/2510.15801">2510.15801</a>); the authors have not reviewed or endorsed this game. Olvana and Donovia are opposing forces from the US Army's ODIN DATE training environment. All scenarios, places and events are original fiction.</p>
 </div></footer>
 <dialog class="lb" id="lb" aria-label="Enlarged picture"><img id="lbImg" alt=""><div class="lbbar"><button type="button" id="lbPrev" aria-label="Previous picture">‹</button><span id="lbCap"></span><button type="button" id="lbNext" aria-label="Next picture">›</button><button type="button" id="lbX">CLOSE ✕</button></div></dialog>
 <script>
@@ -420,6 +457,19 @@ dialog.lb button:hover{border-color:var(--sand);}
     else if(el){document.hidden?el.pause():el.play();}
   });
   ui();
+})();
+</script>
+<script>
+(function () {
+  var dd = document.getElementById('manDD');
+  if (!dd) { return; }
+  document.addEventListener('click', function (e) { if (dd.open && !dd.contains(e.target)) { dd.open = false; } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.open) { dd.open = false; dd.querySelector('summary').focus(); } });
+  // Downloads table: one row, two manuals.
+  var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
+  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.16.0/';
+  var M = { f: ['Cognitive-Terrain-Field-Manual-0.16.pdf', 'Field Manual (PDF)', '13 MB'], p: ['Cognitive-Terrain-Practitioners-Manual-0.16.pdf', "Practitioner's Manual (PDF)", '3.5 MB'] };
+  if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = R + m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>
 </body>

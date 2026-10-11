@@ -9,7 +9,7 @@ onmessage = async e => {
       eng = await import(URL.createObjectURL(new Blob([d.files[d.manifest.engine]], { type: 'text/javascript' })));
       const t0 = performance.now();
       const r = await eng.load(d.files, d.manifest);
-      postMessage({ t: 'ready', ms: performance.now() - t0, misses: r.misses });
+      postMessage({ t: 'ready', ms: performance.now() - t0, misses: r.misses, threads: r.threads, isolated: self.crossOriginIsolated });
     } else if (d.t === 'say') {
       const t0 = performance.now();
       const r = await eng.speak(d.text, { speed: d.speed || 1 });
@@ -24,12 +24,12 @@ window.prepare = async () => {
   window.pk = { manifest, files };
   return Object.keys(files).length;
 };
-window.run = (text) => new Promise(resolve => {
+window.run = (texts) => new Promise(resolve => {
   const w = new Worker(URL.createObjectURL(new Blob([WORKER], { type: 'text/javascript' })), { type: 'module' });
   const log = [];
   w.onmessage = e => {
     log.push(e.data);
-    if (e.data.t === 'ready') w.postMessage({ t: 'say', text });
+    if (e.data.t === 'ready' || (e.data.t === 'audio' && texts.length)) w.postMessage({ t: 'say', text: texts.shift() });
     else resolve(log);
   };
   w.onerror = e => resolve(log.concat({ t: 'err', m: 'worker error: ' + e.message }));

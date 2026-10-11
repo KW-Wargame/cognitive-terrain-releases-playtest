@@ -24,6 +24,16 @@ jobs:
       - run: npx playwright install --with-deps chromium > /dev/null
       - name: Build
         run: node build.mjs 2>&1 | tee -a ../../vp.log; exit ${PIPESTATUS[0]}
+      - name: Source code for the pack's open-source parts
+        run: |
+          mkdir -p out/src && cd out/src
+          npm pack "phonemizer@$(node -p "require('../../node_modules/phonemizer/package.json').version")" --silent
+          npm pack "kokoro-js@$(node -p "require('../../node_modules/kokoro-js/package.json').version")" --silent
+          git clone -q --depth 1 --recurse-submodules --shallow-submodules https://github.com/xenova/phonemizer.js phonemizer.js
+          (cd phonemizer.js && echo "phonemizer.js commit $(git rev-parse HEAD)" && cat .gitmodules 2>/dev/null; ls; grep -n -i "espeak\|licen\|gpl" README.md | head -20; git submodule status; ls */ | head -40) 2>&1 | tee -a ../../../../vp.log
+          rm -rf phonemizer.js/.git phonemizer.js/*/.git
+          tar czf ../voice-pack-sources.tar.gz .
+          ls -la .. | tee -a ../../../../vp.log
       - name: Smoke test (offline)
         run: node smoke.mjs 2>&1 | tee -a ../../vp.log; exit ${PIPESTATUS[0]}
       - name: Report
@@ -43,5 +53,5 @@ jobs:
           if [ "$PUB" != "true" ]; then echo "publish is off"; exit 0; fi
           if gh release view "$TAG" >/dev/null 2>&1; then echo "$TAG already published; bump the id to publish a new pack"; exit 0; fi
           cp out/summary.json out/voice-pack-summary.json
-          gh release create "$TAG" "out/$ZIP" out/voice-pack-summary.json --title "Immersive Edition voice pack (Emma, UK)" \
+          gh release create "$TAG" "out/$ZIP" out/voice-pack-sources.tar.gz out/voice-pack-summary.json --title "Immersive Edition voice pack (Emma, UK)" \
             --notes-file release-notes.md --latest=false

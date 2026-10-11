@@ -9,26 +9,38 @@ fs.copyFileSync(path.join(here, 'smoke.html'), path.join(root, 'smoke.html'));
 const srv = http.createServer((q, s) => {
   const f = path.join(root, decodeURIComponent(q.url.split('?')[0]));
   if (!f.startsWith(root) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { s.writeHead(404); return s.end(); }
-  s.writeHead(200, { 'content-type': f.endsWith('.html') ? 'text/html' : 'application/octet-stream' });
+  const iso = q.url.includes('iso=1') ? { 'cross-origin-opener-policy': 'same-origin', 'cross-origin-embedder-policy': 'credentialless' } : {};
+  s.writeHead(200, { 'content-type': f.endsWith('.html') ? 'text/html' : 'application/octet-stream', ...iso });
   fs.createReadStream(f).pipe(s);
 }).listen(0, '127.0.0.1');
 await new Promise(r => srv.on('listening', r));
 const browser = await chromium.launch();
 const ctx = await browser.newContext();
-const page = await ctx.newPage();
-page.on('console', m => console.log('[page]', m.text()));
-await page.goto(`http://127.0.0.1:${srv.address().port}/smoke.html`);
-console.log('files', await page.evaluate(() => window.prepare()));
-await ctx.setOffline(true);
-const text = 'This is the week in review. Blue held its nerve, and the next crisis comes in two weeks.';
-const log = await page.evaluate(t => window.run(t), text);
-console.log(JSON.stringify(log, null, 1));
+const texts = ['This is Blue Public Broadcast with the week in review.',
+  'Week six ends with Blue thinking more clearly than Olvana, and the gap is growing.',
+  'The next test, the Blackout, comes in two weeks. Blue goes into it with the clearer head.'];
+const runOnce = async iso => {
+  const page = await ctx.newPage();
+  page.on('console', m => console.log('[page]', m.text()));
+  await page.goto(`http://127.0.0.1:${srv.address().port}/smoke.html${iso ? '?iso=1' : ''}`);
+  console.log('files', await page.evaluate(() => window.prepare()));
+  await ctx.setOffline(true);
+  const log = await page.evaluate(t => window.run(t), texts.slice());
+  await ctx.setOffline(false);
+  await page.close();
+  return log;
+};
+const log = await runOnce(false);
+console.log('single thread', JSON.stringify(log));
+const logIso = await runOnce(true);
+console.log('isolated', JSON.stringify(logIso));
 await browser.close();
 srv.close();
-const a = log.find(x => x.t === 'audio');
-const ok = a && a.n / a.rate > 2 && a.peak > 0.01;
+const auds = log.filter(x => x.t === 'audio'), a = auds[0];
+const ok = auds.length === texts.length && auds.every(x => x.n / x.rate > 1.5 && x.peak > 0.01) && logIso.filter(x => x.t === 'audio').length === texts.length;
+const rtf = l => l.filter(x => x.t === 'audio').map(x => +(x.ms / 1000 / (x.n / x.rate)).toFixed(2));
 const sum = JSON.parse(fs.readFileSync(path.join(root, 'summary.json'), 'utf8'));
-Object.assign(sum, { smoke: ok ? 'pass' : 'fail', loadMs: Math.round((log.find(x => x.t === 'ready') || {}).ms || 0), speakMs: a ? Math.round(a.ms) : 0, seconds: a ? +(a.n / a.rate).toFixed(2) : 0, misses: (a || log.find(x => x.t === 'ready') || {}).misses || [], error: (log.find(x => x.t === 'err') || {}).m || '' });
+Object.assign(sum, { smoke: ok ? 'pass' : 'fail', loadMs: Math.round((log.find(x => x.t === 'ready') || {}).ms || 0), speakMs: a ? Math.round(a.ms) : 0, seconds: a ? +(a.n / a.rate).toFixed(2) : 0, rtfSingle: rtf(log), rtfThreads: rtf(logIso), threads: (logIso.find(x => x.t === 'ready') || {}).threads, cpus: (await import('node:os')).cpus().length, misses: (a || log.find(x => x.t === 'ready') || {}).misses || [], error: (log.concat(logIso).find(x => x.t === 'err') || {}).m || '' });
 fs.writeFileSync(path.join(root, 'summary.json'), JSON.stringify(sum, null, 1));
 if (!ok) { console.error('SMOKE TEST FAILED'); process.exit(1); }
 console.log('SMOKE TEST PASSED');

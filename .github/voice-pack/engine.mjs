@@ -35,14 +35,15 @@ export async function load(files, manifest) {
   env.allowRemoteModels = true;
   env.useBrowserCache = false;
   const wasm = env.backends.onnx.wasm;
-  wasm.numThreads = 1;
+  // Threads need a cross-origin-isolated page (the desktop downloads); the web version uses one.
+  wasm.numThreads = globalThis.crossOriginIsolated ? Math.max(1, Math.min(4, (navigator.hardwareConcurrency || 2) - 1)) : 1;
   wasm.proxy = false;
   wasm.wasmPaths = {
     wasm: URL.createObjectURL(typed(manifest.ort.wasm, 'application/wasm')),
     ...(manifest.ort.mjs ? { mjs: URL.createObjectURL(typed(manifest.ort.mjs, 'text/javascript')) } : {})
   };
   tts = await KokoroTTS.from_pretrained(manifest.model.id, { dtype: manifest.model.dtype, device: 'wasm' });
-  return { misses: misses.slice() };
+  return { misses: misses.slice(), threads: wasm.numThreads };
 }
 
 export async function speak(text, { speed = 1 } = {}) {

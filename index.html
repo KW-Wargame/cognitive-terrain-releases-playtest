@@ -502,7 +502,7 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
   var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.0/';
-  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '13 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '4.3 MB'] };
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '13 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '4.6 MB'] };
   if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>

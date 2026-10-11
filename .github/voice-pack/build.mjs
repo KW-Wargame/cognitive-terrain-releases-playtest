@@ -37,7 +37,7 @@ const oneTransformers = {
   name: 'one-transformers',
   setup(b) {
     // kokoro-js's browser file has its own copy of transformers.js built in; use its plain module instead.
-    b.onResolve({ filter: /^kokoro-js$/ }, () => ({ path: path.join(kokoroDir, kpj.module || kpj.main) }));
+    b.onResolve({ filter: /^kokoro-js$/ }, () => ({ path: path.join(kokoroDir, 'dist/kokoro.js') }));
     b.onResolve({ filter: /^@huggingface\/transformers$/ }, a => a.pluginData === 'inner' ? undefined
       : b.resolve(a.path, { resolveDir: kokoroDir, kind: a.kind, pluginData: 'inner' }));
   }

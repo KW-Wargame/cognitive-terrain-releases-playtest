@@ -6,6 +6,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 const sh = (cmd, args, opt = {}) => execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...opt }).trim();
 const ok = (cmd, args) => { try { sh(cmd, args); return true; } catch { return false; } };
+/** Write the files under `dir` at `commit` to a temporary folder; returns their paths. */
+function extract(commit, dir) {
+  const sha = sh('git', ['rev-parse', `${commit}^{commit}`]);
+  const tmp = fs.mkdtempSync(path.join(process.env.RUNNER_TEMP || '/tmp', 'rel-'));
+  return sh('git', ['ls-tree', '-r', '--name-only', sha, '--', dir]).split('\n').filter(Boolean).map(f => {
+    const dest = path.join(tmp, path.basename(f));
+    fs.writeFileSync(dest, execFileSync('git', ['show', `${sha}:${f}`], { maxBuffer: 1 << 30 }));
+    return dest;
+  });
+}
 const cfg = JSON.parse(fs.readFileSync('.github/housekeeping.json', 'utf8'));
 for (const b of cfg.deleteBranches || []) {
   console.log(ok('git', ['push', 'origin', '--delete', b]) ? `deleted branch ${b}` : `branch ${b} already gone`);
@@ -23,6 +33,12 @@ for (const r of cfg.releases) {
   if (ok('gh', ['release', 'view', r.tag])) {
     // Keep notes and the "latest" flag in step with the files in this repo
     if (cfg.updateNotes) sh('gh', ['release', 'edit', r.tag, '--notes-file', `.github/release-notes/${r.tag}.md`, `--latest=${r.latest ? 'true' : 'false'}`]);
+    // Replace files on an existing release (same names), taken from a later commit
+    if (r.refresh) {
+      const out = extract(r.refresh.commit, r.refresh.files);
+      sh('gh', ['release', 'upload', r.tag, ...out, '--clobber']);
+      console.log(`${r.tag}: replaced ${out.map(f => path.basename(f)).join(', ')}`);
+    }
     console.log(`${r.tag}: release exists${cfg.updateNotes ? ', notes updated' : ''}`);
     continue;
   }
@@ -31,13 +47,7 @@ for (const r of cfg.releases) {
     sh('git', ['tag', r.tag, sha]);
     sh('git', ['push', 'origin', `refs/tags/${r.tag}`]);
   }
-  const dir = fs.mkdtempSync(path.join(process.env.RUNNER_TEMP || '/tmp', 'rel-'));
-  const files = sh('git', ['ls-tree', '-r', '--name-only', sha, '--', r.files]).split('\n').filter(Boolean);
-  const out = files.map(f => {
-    const dest = path.join(dir, path.basename(f));
-    fs.writeFileSync(dest, execFileSync('git', ['show', `${sha}:${f}`], { maxBuffer: 1 << 30 }));
-    return dest;
-  });
+  const out = extract(sha, r.files);
   const v = r.tag.replace(/^v/, '').replace(/\.0$/, '');
   sh('gh', ['release', 'create', r.tag, ...out, '--verify-tag', '--title', `Cognitive Terrain ${v}`,
     '--notes-file', `.github/release-notes/${r.tag}.md`, `--latest=${r.latest ? 'true' : 'false'}`]);

@@ -82,7 +82,11 @@
       "tag": "v0.17.1",
       "commit": "e4a077dece888e3b83aa8728e273dc32c2215661",
       "files": "downloads/0.17.1",
-      "latest": true
+      "latest": true,
+      "refresh": {
+        "commit": "dd7d8444d8eb472b2e05f9c17bec45127cf2cc41",
+        "files": "downloads/0.17.1-refresh"
+      }
     }
   ],
   "updateNotes": false,

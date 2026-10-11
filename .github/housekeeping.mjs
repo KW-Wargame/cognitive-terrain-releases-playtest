@@ -11,6 +11,15 @@ for (const b of cfg.deleteBranches || []) {
   console.log(ok('git', ['push', 'origin', '--delete', b]) ? `deleted branch ${b}` : `branch ${b} already gone`);
 }
 for (const r of cfg.releases) {
+  if (cfg.moveTags && ok('git', ['rev-parse', `refs/tags/${r.tag}`])) {
+    // History was re-signed: point the existing tag at the new commit
+    const want = sh('git', ['rev-parse', `${r.commit}^{commit}`]);
+    if (sh('git', ['rev-parse', `refs/tags/${r.tag}^{commit}`]) !== want) {
+      sh('git', ['tag', '-f', r.tag, want]);
+      sh('git', ['push', '-f', 'origin', `refs/tags/${r.tag}`]);
+      console.log(`${r.tag}: moved to ${want.slice(0, 7)}`);
+    }
+  }
   if (ok('gh', ['release', 'view', r.tag])) {
     // Keep notes and the "latest" flag in step with the files in this repo
     if (cfg.updateNotes) sh('gh', ['release', 'edit', r.tag, '--notes-file', `.github/release-notes/${r.tag}.md`, `--latest=${r.latest ? 'true' : 'false'}`]);

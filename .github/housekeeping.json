@@ -5,50 +5,51 @@
   "releases": [
     {
       "tag": "v0.13.0",
-      "commit": "662bc4b",
+      "commit": "b136a805316e0e0ab803794beb668e44acc44ef4",
       "files": "downloads/0.13"
     },
     {
       "tag": "v0.13.1",
-      "commit": "05fa99d",
+      "commit": "f12fe75399059cc59c239650092d898599350414",
       "files": "downloads/0.13.1"
     },
     {
       "tag": "v0.13.2",
-      "commit": "4fba6ad",
+      "commit": "24cda02f3c45619172de8febbf0c51e384e2dc19",
       "files": "downloads/0.13.2"
     },
     {
       "tag": "v0.13.3",
-      "commit": "d72d2dc",
+      "commit": "881c252b032630abeb5f61d0af8e94b05a15f933",
       "files": "downloads/0.13.3"
     },
     {
       "tag": "v0.13.4",
-      "commit": "9d66cfd",
+      "commit": "948ba67826c6be8bbf92da0b089eebb872620a8f",
       "files": "downloads/0.13.4"
     },
     {
       "tag": "v0.13.5",
-      "commit": "b0ffd53",
+      "commit": "a22e98def250f8775b50e52485f5024b2c6672c8",
       "files": "downloads/0.13.5"
     },
     {
       "tag": "v0.14.0",
-      "commit": "f4d4b8b",
+      "commit": "67f56fd70567c1fe84352f189521cb7dbcc4c338",
       "files": "downloads/0.14"
     },
     {
       "tag": "v0.14.1",
-      "commit": "fc5230a0a4c1e0fc58a75b84daf67512c0ce1692",
+      "commit": "74b11535c6db5d5341a5804efd9176bad08f3423",
       "files": "downloads/0.14.1"
     },
     {
       "tag": "v0.14.2",
-      "commit": "b9af51aac7fb420162bd324158629c36d8fb181c",
+      "commit": "250627d2ed2dd22a3463b4b9e3215fbfa6ab766c",
       "files": "downloads/0.14.2",
       "latest": true
     }
   ],
-  "updateNotes": true
+  "updateNotes": true,
+  "moveTags": true
 }

@@ -66,7 +66,12 @@
     {
       "tag": "v0.16.1",
       "commit": "5952bbc6754aeff35a2ada0dc83a8c9fed998a69",
-      "files": "downloads/0.16.1",
+      "files": "downloads/0.16.1"
+    },
+    {
+      "tag": "v0.16.2",
+      "commit": "d5a07af51d230e5ea01c2664bcacd7a44c1f7ad7",
+      "files": "downloads/0.16.2",
       "latest": true
     }
   ],

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.15">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.15.1">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
 <meta property="og:image" content="images/board.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,11 +135,11 @@ dialog.lb button:hover{border-color:var(--sand);}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.15</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.15.1</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.15</b> A much harder Veteran, node status icons, an orders queue and more story per move. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.15.1</b> Two players against Donovia, plus 0.15's harder Veteran, node status icons and orders queue. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
     <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
@@ -156,8 +156,18 @@ dialog.lb button:hover{border-color:var(--sand);}
   <section id="whats-new">
     <h2>What's new</h2>
     <dl class="log">
-      <dt>0.15<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
+      <dt>0.15.1<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
       <dd><ul>
+        <li><b>Two players against Donovia.</b> The two-player screen no longer assumes Olvana. You join as Red, and Blue's first code tells your game which campaign and which opponent you are playing.</li>
+        <li><b>Stories name the right opponent.</b> A few of Blue's story lines still said "Olvana" in Donovia games. They now name the opponent you are actually facing.</li>
+        <li>No rule changes: two-player codes between 0.15 builds still work.</li>
+      </ul>
+      </dd>
+    </dl>
+    <h3 class="vh">Earlier versions</h3>
+    <div class="vers">
+      <details class="ver"><summary><span class="vv">0.15</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Balance, Interface, Story, Terminology"><i class="cat">Balance</i><i class="cat">Interface</i><i class="cat">Story</i><i class="cat">Terminology</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.15</span></summary>
+      <div class="vb"><ul>
         <li><b>A much harder Veteran.</b> On Veteran, Olvana and Donovia now plan two moves ahead: they try their best options, let the week play out, and keep the move that leaves them best placed for the next crisis. They play fair: no extra budget, no hidden information, and their trial runs never peek at the game's own dice. Recruit and Standard are unchanged.</li>
         <li><b>Node status at a glance.</b> Tiny icons under each node show whether it is watched, prebunked or framed, and its label names them in their own colours. A Watch Team or Prebunk is drawn as one outline around every node it covers, with the weeks left; pick the card and hover a node to preview what it would cover.</li>
         <li><b>This week's orders.</b> Above the timeline, each move this week stacks up as an icon, like a strategy game's queue. Click one for its story.</li>
@@ -166,11 +176,7 @@ dialog.lb button:hover{border-color:var(--sand);}
         <li>"Dots" are now <b>nodes</b> everywhere. Two-player codes work between 0.15 builds.</li>
       </ul>
       <figure><img src="images/changelog/0.15-turn.jpg" alt="Donovia's turn on Veteran: this week's orders stacked as icons on the left, and Donovia's move cards on the right with a few lines of the story each." loading="lazy"><figcaption>This week's orders, and the story on each move card</figcaption></figure>
-      <figure><img src="images/changelog/0.15-coverage.jpg" alt="Blue's brain with a Watch Team and a Prebunk each outlined around the nodes they cover, status icons under nodes, and a preview of a new Watch Team covering four nodes." loading="lazy"><figcaption>Status icons and the nodes each defence covers</figcaption></figure>
-      </dd>
-    </dl>
-    <h3 class="vh">Earlier versions</h3>
-    <div class="vers">
+      <figure><img src="images/changelog/0.15-coverage.jpg" alt="Blue's brain with a Watch Team and a Prebunk each outlined around the nodes they cover, status icons under nodes, and a preview of a new Watch Team covering four nodes." loading="lazy"><figcaption>Status icons and the nodes each defence covers</figcaption></figure></div></details>
       <details class="ver"><summary><span class="vv">0.14.2</span><span class="vd">11 Oct 2026 · all platforms</span><span class="vt" aria-label="Categories: Accuracy, Opponents, Manual"><i class="cat">Accuracy</i><i class="cat">Opponents</i><i class="cat">Manual</i></span><span class="vi" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="sr">Show what changed in 0.14.2</span></summary>
       <div class="vb"><ul>
         <li><b>Source check.</b> Every real-world claim in the game and the field manual was checked again against the cited research. A few lines were tightened to say exactly what the sources say, and anything that is a game assumption is now labelled as one.</li>
@@ -280,17 +286,17 @@ dialog.lb button:hover{border-color:var(--sand);}
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.15 for the browser, as one HTML file, and as installers for Windows, Mac and Linux. Two-player codes work between all 0.15 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.15.1 for the browser, as one HTML file, and as installers for Windows, Mac and Linux. Two-player codes work between all 0.15 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/cognitive-terrain-0.15.html">cognitive-terrain-0.15.html</a></td><td class="s">2.9 MB</td></tr>
-        <tr><td>Read the rules: the illustrated field manual</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/Cognitive-Terrain-Field-Manual-0.15.pdf">Field Manual (PDF)</a></td><td class="s">14 MB</td></tr>
-        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-Setup.exe">CognitiveTerrain-0.15-Setup.exe</a></td><td class="s">8.4 MB</td></tr>
-        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
-        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/CognitiveTerrain-0.15-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.0/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/cognitive-terrain-0.15.1.html">cognitive-terrain-0.15.1.html</a></td><td class="s">2.9 MB</td></tr>
+        <tr><td>Read the rules: the illustrated field manual</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/Cognitive-Terrain-Field-Manual-0.15.1.pdf">Field Manual (PDF)</a></td><td class="s">14 MB</td></tr>
+        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-Setup.exe">CognitiveTerrain-0.15.1-Setup.exe</a></td><td class="s">8.4 MB</td></tr>
+        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
+        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.3 MB</td></tr>
+        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/CognitiveTerrain-0.15.1-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
+        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.15.1/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">2 KB</td></tr>
       </tbody>
     </table>
     <p class="note" style="margin-top:14px">The installers are not code-signed yet. On Windows choose <b>More info → Run anyway</b>; on a Mac right-click the app and choose <b>Open</b> the first time.</p>

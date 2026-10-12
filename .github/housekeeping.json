@@ -95,7 +95,7 @@
       "latest": true
     }
   ],
-  "updateNotes": false,
+  "updateNotes": true,
   "moveTags": false,
   "note": "Version tags and old branches are kept in step by the Housekeeping workflow."
 }

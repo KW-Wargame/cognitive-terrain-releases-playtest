@@ -86,7 +86,12 @@
     {
       "tag": "v0.17.2",
       "commit": "8d9ad725cf0a167c40a695cb0ef67a17d5b130cc",
-      "files": "downloads/0.17.2",
+      "files": "downloads/0.17.2"
+    },
+    {
+      "tag": "v0.17.3",
+      "commit": "024a40a59c462c0380ac03330055a72a5f4a02b4",
+      "files": "downloads/0.17.3",
       "latest": true
     }
   ],

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.17.3">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.17.4">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
 <meta property="og:image" content="images/board.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,11 +169,11 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.17.3</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.17.4</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.17.3</b> Both manuals rewritten as numbered rulebooks, with a two-sided player aid, plus 0.17's White Cell for facilitated sessions. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.17.4</b> A clearer move preview, plus 0.17.3's numbered rulebooks and player aid, plus 0.17's White Cell for facilitated sessions. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
     <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
@@ -195,18 +195,25 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   <section id="whats-new">
 <h2>What's new</h2>
 <dl class="log">
-<dt>0.17.3<small>11 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
+<dt>0.17.4<small>12 Oct 2026 · all platforms</small><span class="latest">LATEST</span></dt>
 <dd>
 <ul>
-<li><b>Both manuals rewritten as numbered rulebooks.</b> Every rule has one number (such as 10.3) and is stated once, so you can find it. Tricky rules get a worked example, and advice is kept to one-line player's notes. The in-game Guide is the new Field Manual.<ul class="sub"><li>How hard a move lands, what moves its audience and what happens at the end of each week are explained in plain words, with pictures of worked examples and the game's own hover card.</li><li>Field Manual: sections 1.0 to 15.0 in the order a week is played, then reference tables, a glossary with plain and military terms side by side, the player aid, and sources.</li><li>Practitioner's Manual: the eight campaigns, sessions, the White Cell, the debrief, the model in numbers, the editor, designer's notes keyed to the Field Manual's rules, and a new section on sources and limits, with a facilitator's checklist and debrief questions for each campaign.</li><li>The Practitioner's Manual's worked examples come with pictures: one week at the White Cell console, the scoring arithmetic, reading a balance check, and a session timeline.</li></ul></li>
-<li><b>New: a two-sided player aid.</b> The sequence of play, your turn, the cards and the areas on one sheet. It is the Field Manual's Appendix C, and its own PDF to print.</li>
-<li><b>Fixes.</b> Humanoid Robots now says it also gives Plant Stories +1 grade, as it always has. General edits to documentation for clarity.</li>
+<li><b>A clearer move preview.</b> Hover a node with a card picked and the card now shows how far the move pushes it as one big number, who the node leans toward now and after the move on a red and blue bar with a gold arrow, a verdict such as "Gets a foothold", arrows for what helps or hurts, and the odds in words: Almost guaranteed, Likely, Risky or Long shot, with the chance to fail. The words describe the game's dice, not real-world odds.<ul class="sub"><li><b>Show the numbers</b> in Settings adds the arithmetic under the preview.</li><li>The push shown is for the usual audience the move would reach, so a watched node shows how much weaker an attack there usually is. The side panel shows the same figure.</li><li>Each move's result and full story, with the research formula, are unchanged.</li></ul></li>
+<li><b>Numbers that add up.</b> A node's lean is rounded the same way everywhere, and the push in a move's preview and result is the change you see on the map. A push of 22.5 from Olvana 100 now reads +23 and Olvana 77; before, the map showed Olvana 78.</li>
+<li>The Field Manual's move and push pages show the new preview.</li>
 <li>No rule changes. Two-player codes work between 0.17 builds.</li>
 </ul>
 </dd>
 </dl>
 <h3 class="vh">Earlier versions</h3>
 <div class="vers">
+<details class="ver"><summary><span class="vv">0.17.3</span><span class="vd">11 Oct 2026 · all platforms</span><span aria-label="Categories: Manuals, Player aid" class="vt" role="group"><i class="cat">Manuals</i><i class="cat">Player aid</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.17.3</span></summary>
+<div class="vb"><ul>
+<li><b>Both manuals rewritten as numbered rulebooks.</b> Every rule has one number (such as 10.3) and is stated once, so you can find it. Tricky rules get a worked example, and advice is kept to one-line player's notes. The in-game Guide is the new Field Manual.<ul class="sub"><li>How hard a move lands, what moves its audience and what happens at the end of each week are explained in plain words, with pictures of worked examples and the game's own hover card.</li><li>Field Manual: sections 1.0 to 15.0 in the order a week is played, then reference tables, a glossary with plain and military terms side by side, the player aid, and sources.</li><li>Practitioner's Manual: the eight campaigns, sessions, the White Cell, the debrief, the model in numbers, the editor, designer's notes keyed to the Field Manual's rules, and a new section on sources and limits, with a facilitator's checklist and debrief questions for each campaign.</li><li>The Practitioner's Manual's worked examples come with pictures: one week at the White Cell console, the scoring arithmetic, reading a balance check, and a session timeline.</li></ul></li>
+<li><b>New: a two-sided player aid.</b> The sequence of play, your turn, the cards and the areas on one sheet. It is the Field Manual's Appendix C, and its own PDF to print.</li>
+<li><b>Fixes.</b> Humanoid Robots now says it also gives Plant Stories +1 grade, as it always has. General edits to documentation for clarity.</li>
+<li>No rule changes. Two-player codes work between 0.17 builds.</li>
+</ul></div></details>
 <details class="ver"><summary><span class="vv">0.17.2</span><span class="vd">11 Oct 2026 · all platforms</span><span aria-label="Categories: Accuracy" class="vt" role="group"><i class="cat">Accuracy</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.17.2</span></summary>
 <div class="vb"><ul>
 <li><b>Every number checked.</b> All the numbers and worked examples in both manuals, the in-game Guide and the game's own text were checked against the rules.<ul class="sub"><li>Official Statements restore 22 for Blue while its Trust holds, and 7 once it is lost (the card said 14).</li><li>A framed node takes 40% more from every push while it is framed. Frame then Plant gives you a foothold on a well-held node, not a capture.</li><li>A Watch Team cuts an attack's reach to a tenth, usually a grade or more; a lost Trust multiplies the other side's reach by ten.</li><li>Show of Force pushes 24 on ACT and 20 on DECIDE. The income table, grade bands, crisis bands, the area-loss rule and the extra-move condition now say exactly what the game does.</li><li>The Practitioner's Manual's math pages add the terms they had left out, and use the same balance band as the campaign editor.</li></ul></li>
@@ -326,17 +333,17 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.17.3 for the browser, as one HTML file, and as installers for Windows, Mac and Linux, with the Field Manual and a two-sided player aid for players, and the Practitioner's Manual for facilitators. Two-player codes work between all 0.17 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.17.4 for the browser, as one HTML file, and as installers for Windows, Mac and Linux, with the Field Manual and a two-sided player aid for players, and the Practitioner's Manual for facilitators. Two-player codes work between all 0.17 builds. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/cognitive-terrain-0.17.3.html">cognitive-terrain-0.17.3.html</a></td><td class="s">3.0 MB</td></tr>
-        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Player aid (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">12.6 MB</td></tr>
-        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/CognitiveTerrain-0.17.3-Setup.exe">CognitiveTerrain-0.17.3-Setup.exe</a></td><td class="s">8.6 MB</td></tr>
-        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/CognitiveTerrain-0.17.3-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
-        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/CognitiveTerrain-0.17.3-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/CognitiveTerrain-0.17.3-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
-        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">3.1 KB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/cognitive-terrain-0.17.4.html">cognitive-terrain-0.17.4.html</a></td><td class="s">3.0 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Player aid (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">12.8 MB</td></tr>
+        <tr><td>Install on Windows 10 or 11 (no admin rights needed)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/CognitiveTerrain-0.17.4-Setup.exe">CognitiveTerrain-0.17.4-Setup.exe</a></td><td class="s">8.7 MB</td></tr>
+        <tr><td>Install on a Mac with an M-series chip</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/CognitiveTerrain-0.17.4-macOS-AppleSilicon.zip">macOS-AppleSilicon.zip</a></td><td class="s">4.2 MB</td></tr>
+        <tr><td>Install on an older Intel Mac</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/CognitiveTerrain-0.17.4-macOS-Intel.zip">macOS-Intel.zip</a></td><td class="s">4.4 MB</td></tr>
+        <tr><td>Linux</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/CognitiveTerrain-0.17.4-Linux.tar.gz">Linux.tar.gz</a></td><td class="s">4.3 MB</td></tr>
+        <tr><td>Install steps and troubleshooting</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/PLAYTEST-README.txt">PLAYTEST-README.txt</a></td><td class="s">3.1 KB</td></tr>
         <tr><td>Optional: Immersive Briefings voice pack (put it beside an installed game, or load it in Settings)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">CognitiveTerrain-Voice-Emma.zip</a></td><td class="s">111 MB</td></tr>
       </tbody>
     </table>
@@ -477,8 +484,8 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.open) { dd.open = false; dd.querySelector('summary').focus(); } });
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
-  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.3/';
-  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '12.6 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '7.0 MB'], a: ['manual/Cognitive-Terrain-Player-Aid.pdf', 'Player aid (PDF)', '0.2 MB'] };
+  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.17.4/';
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '12.8 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '7.0 MB'], a: ['manual/Cognitive-Terrain-Player-Aid.pdf', 'Player aid (PDF)', '0.2 MB'] };
   if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>

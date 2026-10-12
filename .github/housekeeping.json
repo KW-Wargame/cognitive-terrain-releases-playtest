@@ -92,14 +92,10 @@
       "tag": "v0.17.3",
       "commit": "024a40a59c462c0380ac03330055a72a5f4a02b4",
       "files": "downloads/0.17.3",
-      "latest": true,
-      "refresh": {
-        "commit": "a4db8b57a282b0161093e921af76644c8a04f3a3",
-        "files": "downloads/0.17.3-refresh"
-      }
+      "latest": true
     }
   ],
-  "updateNotes": true,
+  "updateNotes": false,
   "moveTags": false,
   "note": "Version tags and old branches are kept in step by the Housekeeping workflow."
 }

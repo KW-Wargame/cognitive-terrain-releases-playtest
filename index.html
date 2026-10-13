@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.18.2">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.18.3">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
 <meta property="og:image" content="images/board.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,11 +169,11 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.18.2</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.18.3</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.18.2</b> A centred scoreboard with the next crisis front and centre, clearer health bars, and dialogs in the new frame. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.18.3</b> A new start screen over the live map, and every window redesigned, with the research behind each grade and technology shown. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
     <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
@@ -195,9 +195,21 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   <section id="whats-new">
 <h2>What's new</h2>
 <dl class="log">
-<dt>0.18.2<small>12 Oct 2026 · browser</small><span class="latest">LATEST</span></dt>
+<dt>0.18.3<small>12 Oct 2026 · browser</small><span class="latest">LATEST</span></dt>
 <dd>
-<ul><li><b>A centred scoreboard.</b> The top bar now reads Blue's points, the next crisis, then the other side's points, in the middle of the bar. The week counter is gone: the timeline lights the current week. In the Minimal layout each side's Decision Health sits beside its points.</li>
+<ul><li><b>A new start screen.</b> Campaigns sit in a column on the left, grouped by opponent, with the opponent's mind live on the map behind them. The chosen campaign's story and its four crises, on a 16-week calendar with the area each one tests, sit at the bottom, with Words, Difficulty and START in one bar. Two players, Campaigns, Guide and Settings are four buttons under the list.</li></ul><figure><img width="1600" height="1000" alt="The new start screen: a column on the left with the game title, Choose a campaign, Olvana's four campaigns and Donovia's four, and four buttons for Two players, Campaigns, Guide and Settings. On the right, Olvana's mind as a red star map, and below it Typhoon Ines with its story, twist and a line of 16 weeks with sand diamonds at weeks 4, 8, 12 and 16 labelled Notice, Interpret, Act and Trust. The bottom bar has Words Plain, Difficulty Standard, Skip tutorial and Start with tutorial." loading="lazy" src="images/changelog/0.18.3-start.jpg"/><figcaption>The new start screen</figcaption></figure>
+<div class="cl-pair"><div class="cl-note"><ul><li><b>Every dialog in one frame.</b> A short line says what each one is for, then a big title, clean sections and one sand button. Settings now has five sections: Display, Words, Sound, Briefings and Pace.</li><li><b>The full story shows the spread-grade formula</b>, worked through with the move's own views, likes, comments and shares, and the score and push for every grade from F to A+. The result card after each move stays.</li></ul></div><figure><img width="1000" height="653" alt="The full story of a move: on the left what happened and what it changed; on the right a C grade, the F to A+ scale with each grade's score and push, and a box with the score-per-post formula and this move's numbers: (398 + 39 + 8 + 13) ÷ 12 = 38, a C, push ×1." loading="lazy" src="images/changelog/0.18.3-story.jpg"/><figcaption>How far a move spread, worked out</figcaption></figure></div>
+<div class="cl-pair flip"><div class="cl-note"><ul><li><b>New technologies show how disruptive the research scores them:</b> each of the four attributes rated 1 to 3 with what it measures, and the total on a meter with the flag at 9.</li><li>Crisis results, Week in review, Two players, Campaigns and the debrief follow the same layout; the debrief keeps every section, including the replay with both minds.</li></ul></div><figure><img width="1000" height="574" alt="The new technology window for Social Bots, 1999: four attribute rows rated with diamonds, a total S of 9 on a meter marked at the flag, and two large choices, Use it and Prepare defences." loading="lazy" src="images/changelog/0.18.3-tech.jpg"/><figcaption>A new technology and its disruption score</figcaption></figure></div>
+<ul>
+<li>The tutorial and all three manuals are updated, with every picture retaken.</li>
+<li>No rule changes. Two-player codes work between 0.18 builds.</li>
+</ul>
+</dd>
+</dl>
+<h3 class="vh">Earlier versions</h3>
+<div class="vers">
+<details class="ver"><summary><span class="vv">0.18.2</span><span class="vd">12 Oct 2026 · browser</span><span aria-label="Categories: Interface" class="vt" role="group"><i class="cat">Interface</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.18.2</span></summary>
+<div class="vb"><ul><li><b>A centred scoreboard.</b> The top bar now reads Blue's points, the next crisis, then the other side's points, in the middle of the bar. The week counter is gone: the timeline lights the current week. In the Minimal layout each side's Decision Health sits beside its points.</li>
 <li><b>The next crisis stands out.</b> A sand badge names the crisis, marks the four crises, counts down the weeks and names the area it tests. It turns amber the week before and pulses in the week itself.</li></ul><figure><img width="1600" height="494" alt="Week 1 in both versions. Left, 0.18.1: the week, points, both health scores and the next crisis run along the top bar as small text. Right, 0.18.2: the middle of the top bar reads BLUE 0 PTS, a sand CRISIS 1 badge with IN 3 WEEKS and NOTICE, then OLVANA 0 PTS; the health bars on the left are full width, labelled .5, .72, .86 and 1; the small map at top right is brighter." loading="lazy" src="images/changelog/0.18.2-before-after.jpg"/><figcaption>Before (0.18.1, left) and after (0.18.2, right)</figcaption></figure>
 <div class="cl-pair"><div class="cl-note"><ul><li><b>Clearer health bars.</b> Name and score above a full-width bar from 0.5 to 1, with the crisis cut-offs labelled.</li><li><b>Dialogs in the same frame.</b> The start screen, Settings, Week in review, new technologies and crises use the framed panels, headings and buttons of the rest of the screen. In a crisis, Blue's result is edged blue and the other side's red.</li></ul></div><figure><img width="900" height="669" alt="The Crisis D2 window, The Blackout, tests Interpret: Blue's result edged in blue, DELAYED, +1 point; Olvana's edged in red, SOUND, +3 points; a sand-framed CONTINUE button." loading="lazy" src="images/changelog/0.18.2-crisis.jpg"/><figcaption>A crisis result in the new frame</figcaption></figure></div>
 <ul>
@@ -206,11 +218,7 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 <li>On small screens the top bar shortens a few labels to stay on one line, and the music and sound buttons move to Settings only.</li>
 <li>The tutorial, Field Manual and Player Aid are updated, with every picture retaken.</li>
 <li>No rule changes. Two-player codes work between 0.18 builds.</li>
-</ul>
-</dd>
-</dl>
-<h3 class="vh">Earlier versions</h3>
-<div class="vers">
+</ul></div></details>
 <details class="ver"><summary><span class="vv">0.18.1</span><span class="vd">12 Oct 2026 · browser</span><span aria-label="Categories: Interface, Layout" class="vt" role="group"><i class="cat">Interface</i><i class="cat">Layout</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.18.1</span></summary>
 <div class="vb"><ul><li><b>A new screen layout.</b> Panels now run down both sides of the map. The left side holds the mind you are looking at, Decision Health, budget and moves; the right side holds the other mind and What is happening. The map sits centred between them.</li></ul><figure><img width="1600" height="494" alt="Week 1 of the same campaign in both versions. Left, 0.18: the health bars float at the top of the map, budget and moves sit under the right-hand panel, and the moves are three dots. Right, 0.18.1: the brain title, Decision Health, Their edge on you, and budget and moves with a large 3 and three diamonds run down the left side, the other mind and What is happening down the right, with the map centred between and zoom buttons at its top right." loading="lazy" src="images/changelog/0.18.1-before-after.jpg"/><figcaption>Before (0.18, left) and after (0.18.1, right)</figcaption></figure>
 <ul><li><b>Default or Minimal.</b> Settings › Screen layout. Minimal gives the map the whole screen and keeps only budget and moves in view; two buttons next to the view tabs open the side panels. Narrow screens always use Minimal.</li></ul><figure><img width="1600" height="494" alt="The same week 1 screen in both layouts. Left, Default: the brain title, Decision Health, Their edge on you, and budget and moves down the left side, the other mind and What is happening down the right, the map between. Right, Minimal: the map fills the screen, with budget and moves at the bottom left, two panel buttons beside the view tabs and the zoom buttons at the bottom right." loading="lazy" src="images/changelog/0.18.1-layouts.jpg"/><figcaption>Default (left) and Minimal (right)</figcaption></figure>
@@ -364,12 +372,12 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.18.2 runs in your browser: play it online with <b>Play in your browser</b> above, or download it as one HTML file that works offline. With it come the Field Manual and a two-sided player aid for players, and the Practitioner's Manual for facilitators. The game is supported in the browser only for now. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.18.3 runs in your browser: play it online with <b>Play in your browser</b> above, or download it as one HTML file that works offline. With it come the Field Manual and a two-sided player aid for players, and the Practitioner's Manual for facilitators. The game is supported in the browser only for now. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.18.2/cognitive-terrain-0.18.2.html">cognitive-terrain-0.18.2.html</a></td><td class="s">3.3 MB</td></tr>
-        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Player aid (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">14.2 MB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.18.3/cognitive-terrain-0.18.3.html">cognitive-terrain-0.18.3.html</a></td><td class="s">3.0 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Player aid (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">13.2 MB</td></tr>
         <tr><td>Optional: Immersive Briefings voice pack (load it in Settings)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">CognitiveTerrain-Voice-Emma.zip</a></td><td class="s">111 MB</td></tr>
       </tbody>
     </table>
@@ -509,8 +517,8 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.open) { dd.open = false; dd.querySelector('summary').focus(); } });
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
-  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.18.2/';
-  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '14.2 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '7.6 MB'], a: ['manual/Cognitive-Terrain-Player-Aid.pdf', 'Player aid (PDF)', '0.2 MB'] };
+  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.18.3/';
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '13.2 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '7.2 MB'], a: ['manual/Cognitive-Terrain-Player-Aid.pdf', 'Player aid (PDF)', '0.2 MB'] };
   if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>

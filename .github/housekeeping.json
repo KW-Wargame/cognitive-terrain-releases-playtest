@@ -111,7 +111,12 @@
     {
       "tag": "v0.18.2",
       "commit": "29837b40bad7f4cf7f6ea8f53040b571d53ab436",
-      "files": "downloads/0.18.2",
+      "files": "downloads/0.18.2"
+    },
+    {
+      "tag": "v0.18.3",
+      "commit": "25b73a74f303e20d4a485833a052e99df3db27f0",
+      "files": "downloads/0.18.3",
       "latest": true
     }
   ],

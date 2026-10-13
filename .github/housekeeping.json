@@ -137,11 +137,7 @@
       "tag": "v0.20.0",
       "commit": "e442f7ebe06fb01621c213f9ba1cb2a77159b00e",
       "files": "downloads/0.20",
-      "latest": true,
-      "refresh": {
-        "commit": "93ea1c0a2a545e4d17dd2b205b4bd8726bdda0f2",
-        "files": "downloads/0.20"
-      }
+      "latest": true
     }
   ],
   "updateNotes": false,

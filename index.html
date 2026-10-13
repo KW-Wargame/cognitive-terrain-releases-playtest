@@ -405,7 +405,7 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
         <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.19.2/cognitive-terrain-0.19.2.html">cognitive-terrain-0.19.2.html</a></td><td class="s">2.6 MB</td></tr>
-        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Quick Reference (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">11.9 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Quick Reference (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">12.1 MB</td></tr>
         <tr><td>Optional: Immersive Briefings voice pack (load it in Settings)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">CognitiveTerrain-Voice-Emma.zip</a></td><td class="s">111 MB</td></tr>
       </tbody>
     </table>
@@ -546,7 +546,7 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
   var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.19.2/';
-  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '11.9 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '6.9 MB'], a: ['manual/Cognitive-Terrain-Quick-Reference.pdf', 'Quick Reference (PDF)', '1.6 MB'] };
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '12.1 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '6.9 MB'], a: ['manual/Cognitive-Terrain-Quick-Reference.pdf', 'Quick Reference (PDF)', '1.7 MB'] };
   if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.19.1">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.19.2">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
 <meta property="og:image" content="images/board.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,11 +169,11 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.19.1</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.19.2</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.19.1</b> Tidier nodes: each status shows once, as an icon under the node. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.19.2</b> Three new manuals written for playing on a PC, including a two-sided Quick Reference, and a clearer area of effect. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
     <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
@@ -181,9 +181,9 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
       <a class="btn primary" href="play/">Play in your browser ▸</a>
       <details class="dd" id="manDD"><summary class="btn">Read the manual (PDF) <span class="car" aria-hidden="true">▾</span></summary>
         <div class="menu">
-          <a href="manual/Cognitive-Terrain-Field-Manual.pdf"><b>Field Manual</b><small>For players: how to play, every screen and move</small></a>
-          <a href="manual/Cognitive-Terrain-Practitioners-Manual.pdf"><b>Practitioner's Manual</b><small>For facilitators: campaigns, sessions, White Cell, debrief, designer's notes</small></a>
-          <a href="manual/Cognitive-Terrain-Player-Aid.pdf"><b>Player aid</b><small>Two sides to print: sequence of play, cards and areas</small></a>
+          <a href="manual/Cognitive-Terrain-Field-Manual.pdf"><b>Field Manual</b><small>For players: the screen, a turn played out, every card, with pictures</small></a>
+          <a href="manual/Cognitive-Terrain-Practitioners-Manual.pdf"><b>Practitioner's Manual</b><small>For facilitators: sessions, White Cell, every rule and formula, the research</small></a>
+          <a href="manual/Cognitive-Terrain-Quick-Reference.pdf"><b>Quick Reference</b><small>Two sides to keep by the keyboard: controls, a turn, cards, scoring</small></a>
         </div></details>
       <a class="btn" href="#downloads">All downloads</a>
     </div>
@@ -195,17 +195,26 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   <section id="whats-new">
 <h2>What's new</h2>
 <dl class="log">
-<dt>0.19.1<small>13 Oct 2026 · browser</small><span class="latest">LATEST</span></dt>
+<dt>0.19.2<small>13 Oct 2026 · browser</small><span class="latest">LATEST</span></dt>
 <dd>
-<div class="cl-pair"><div class="cl-note"><ul><li><b>Tidier nodes.</b> A node's statuses (watched, prebunked, framed) now show once, as the row of icons under it. The extra rings, corner brackets, blinking dot and status words on its label are gone; hover the node for the details.</li><li>A node's name never sits on its own status icons, and area names, such as a crisis test or a lost area, step clear of named nodes.</li></ul></div><figure><img width="1083" height="380" alt="The same node before and after. Before: Social Platforms with a dashed ring, corner brackets and a dot, the area name CHRONIC crossing it, its name cut by a status icon and the words INOCULATED and PRIMED under it. After: the name and Blue 52 held beside the node, its gauge ring, one row of three status icons under it, and CHRONIC clear above." loading="lazy" src="images/changelog/0.19.1-node.jpg"/><figcaption>Before (left) and after (right)</figcaption></figure></div>
+<ul><li><b>Three manuals, rewritten for playing on a PC.</b>
+<ul class="sub"><li>The <b>Field Manual</b> teaches the game screen by screen: the idea, every part of the screen numbered, a turn in four steps, a whole turn played out with pictures and Red's answer, the cards and ten tips, in plain game words. It is also the in-game Guide.</li>
+<li>The <b>Practitioner's Manual</b> keeps the research and the maths, and now holds every rule with its exact numbers. Its campaign pages show the new crisis order.</li>
+<li>A two-sided <b>Quick Reference</b> replaces the player aid: mouse and keyboard, a turn in five steps, the cards, symbols and scoring.</li></ul></li></ul><figure><img width="1886" height="600" alt="Four pages side by side: the Field Manual cover, its page A turn, played out with screenshots of Plant Stories on News Media, the Practitioner's Manual cover, and side 1 of the Quick Reference with a table of controls and a turn in five steps." loading="lazy" src="images/changelog/0.19.2-manuals.jpg"/><figcaption>The Field Manual, a worked turn, the Practitioner's Manual and the Quick Reference</figcaption></figure>
+<div class="cl-pair"><div class="cl-note"><ul><li><b>A clearer area of effect.</b> Watch Team, Prebunk and the move preview ring every covered node in sand and draw a sand line along each link between them, pulsing gently. No node is left out.</li><li><b>The replay shows the real crisis score</b> next to each result, and its two maps name the entry points and Top Leadership with each one's lean.</li><li><b>The side panel fits in Military words</b> at every text size, and Red's move cards stop above budget and moves.</li><li>The tutorial panel has the same frame as every other window.</li></ul></div><figure><img width="900" height="441" alt="Part of Blue's mind with a Prebunk previewed: sand rings round five nodes joined by sand lines, labelled 5 nodes covered, beside a Watch Team already in place." loading="lazy" src="images/changelog/0.19.2-area.jpg"/><figcaption>The area of effect: rings and lines</figcaption></figure></div>
 <ul>
-<li>The Field Manual's symbol key and pictures are updated.</li>
 <li>No rule changes. Two-player codes work between 0.19 builds.</li>
 </ul>
 </dd>
 </dl>
 <h3 class="vh">Earlier versions</h3>
 <div class="vers">
+<details class="ver"><summary><span class="vv">0.19.1</span><span class="vd">13 Oct 2026 · browser</span><span aria-label="Categories: Interface" class="vt" role="group"><i class="cat">Interface</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.19.1</span></summary>
+<div class="vb"><div class="cl-pair"><div class="cl-note"><ul><li><b>Tidier nodes.</b> A node's statuses (watched, prebunked, framed) now show once, as the row of icons under it. The extra rings, corner brackets, blinking dot and status words on its label are gone; hover the node for the details.</li><li>A node's name never sits on its own status icons, and area names, such as a crisis test or a lost area, step clear of named nodes.</li></ul></div><figure><img width="1083" height="380" alt="The same node before and after. Before: Social Platforms with a dashed ring, corner brackets and a dot, the area name CHRONIC crossing it, its name cut by a status icon and the words INOCULATED and PRIMED under it. After: the name and Blue 52 held beside the node, its gauge ring, one row of three status icons under it, and CHRONIC clear above." loading="lazy" src="images/changelog/0.19.1-node.jpg"/><figcaption>Before (left) and after (right)</figcaption></figure></div>
+<ul>
+<li>The Field Manual's symbol key and pictures are updated.</li>
+<li>No rule changes. Two-player codes work between 0.19 builds.</li>
+</ul></div></details>
 <details class="ver"><summary><span class="vv">0.19</span><span class="vd">13 Oct 2026 · browser</span><span aria-label="Categories: Rules, Interface, Layout" class="vt" role="group"><i class="cat">Rules</i><i class="cat">Interface</i><i class="cat">Layout</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.19</span></summary>
 <div class="vb"><ul><li><b>Every campaign's crises follow the decision loop.</b> Week 4 tests Notice, week 8 Interpret, week 12 Decide and week 16 Act, which counts double. Trust is no longer tested last. Some crisis stories swapped weeks to fit their area. Balance was checked over 200 computer-vs-computer games per campaign: Blue wins between 42% and 60% on Standard, and Collision at Varrin Reef is much fairer than before.</li>
 <li><b>A clearer screen</b>, with more of the map in view, without going to the Minimal layout. Decision Health is two glowing bars under the crisis bar, Blue and Olvana mirrored, number in the middle, then the state, then the bar. The side panel is narrower and flush to the right edge, budget and moves sit bottom right, and the log sits bottom left.</li></ul><figure><img width="1600" height="494" alt="Week 6 in both versions. Left, 0.18.3: health bars, Their edge on you and budget and moves down the left side, and a tall side panel with the log on the right. Right, 0.19: two glowing health bars under the crisis bar, a short left side, a narrower side panel on the right with budget and moves under it, and the log closed in the bottom left corner." loading="lazy" src="images/changelog/0.19-before-after.jpg"/><figcaption>Before (0.18.3, left) and after (0.19, right)</figcaption></figure>
@@ -391,12 +400,12 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.19.1 runs in your browser: play it online with <b>Play in your browser</b> above, or download it as one HTML file that works offline. With it come the Field Manual and a two-sided player aid for players, and the Practitioner's Manual for facilitators. The game is supported in the browser only for now. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.19.2 runs in your browser: play it online with <b>Play in your browser</b> above, or download it as one HTML file that works offline. With it come the Field Manual and a two-sided Quick Reference for players, and the Practitioner's Manual for facilitators. The game is supported in the browser only for now. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.19.1/cognitive-terrain-0.19.1.html">cognitive-terrain-0.19.1.html</a></td><td class="s">3.0 MB</td></tr>
-        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Player aid (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">13.0 MB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.19.2/cognitive-terrain-0.19.2.html">cognitive-terrain-0.19.2.html</a></td><td class="s">2.6 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Quick Reference (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">11.9 MB</td></tr>
         <tr><td>Optional: Immersive Briefings voice pack (load it in Settings)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">CognitiveTerrain-Voice-Emma.zip</a></td><td class="s">111 MB</td></tr>
       </tbody>
     </table>
@@ -536,8 +545,8 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.open) { dd.open = false; dd.querySelector('summary').focus(); } });
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
-  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.19.1/';
-  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '13.0 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '7.1 MB'], a: ['manual/Cognitive-Terrain-Player-Aid.pdf', 'Player aid (PDF)', '0.2 MB'] };
+  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.19.2/';
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '11.9 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '6.9 MB'], a: ['manual/Cognitive-Terrain-Quick-Reference.pdf', 'Quick Reference (PDF)', '1.6 MB'] };
   if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>

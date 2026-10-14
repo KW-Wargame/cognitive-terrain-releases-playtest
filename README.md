@@ -12,7 +12,7 @@ An educational, turn-based wargame of cognitive warfare: Blue vs Red (Olvana or 
 | Field Manual for players (PDF) | [manual/Cognitive-Terrain-Field-Manual.pdf](manual/Cognitive-Terrain-Field-Manual.pdf) |
 | Practitioner's Manual for facilitators (PDF) | [manual/Cognitive-Terrain-Practitioners-Manual.pdf](manual/Cognitive-Terrain-Practitioners-Manual.pdf) |
 | Quick Reference for players, two sides (PDF) | [manual/Cognitive-Terrain-Quick-Reference.pdf](manual/Cognitive-Terrain-Quick-Reference.pdf) |
-| Game as one HTML file | [cognitive-terrain-0.21.1.html](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.21.1/cognitive-terrain-0.21.1.html) |
+| Game as one HTML file | [cognitive-terrain-0.22.html](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.22.0/cognitive-terrain-0.22.html) |
 | Immersive Briefings voice pack (optional, 111 MB) | [CognitiveTerrain-Voice-Emma.zip](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip) |
 | Every earlier version | [Releases](https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases) |
 

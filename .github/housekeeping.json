@@ -154,11 +154,6 @@
       "files": "downloads/0.22"
     },
     {
-      "tag": "v0.22.1",
-      "commit": "b3ef92211608775b3eb780630e2575189fb68e4b",
-      "files": "downloads/0.22.1"
-    },
-    {
       "tag": "v0.23.0",
       "commit": "be6778fd7489330446e7fdae4061eb56ad3cb773",
       "files": "downloads/0.23",

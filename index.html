@@ -5,42 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cognitive Terrain · Playtest</title>
 <meta name="description" content="Cognitive Terrain: an educational, turn-based wargame of cognitive warfare. Blue vs Red. Play in your browser or download.">
-<meta property="og:title" content="Cognitive Terrain · Playtest 0.22">
+<meta property="og:title" content="Cognitive Terrain · Playtest 0.22.1">
 <meta property="og:description" content="An educational wargame of cognitive warfare. Protect your side's decisions, wear down the other's, and handle four crises well.">
-<meta property="og:image" content="images/board.jpg?v=0.22">
+<meta property="og:image" content="images/board.jpg?v=0.22.1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
 <style>
 :root{
   color-scheme: dark;
   --void:#05070b; --panel:#0d1015; --line:#272c34; --line2:#3a414b;
   --ink:#eef0f2; --dim:#b3bac3; --faint:#9ba3ad;
-  --sand:#d8c69c; --blue:#5fe3e8; --red:#ff5242;
-  --display:'Michroma','Eurostile','Arial Narrow',sans-serif;
-  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
-  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --sand:#f5d547; --blue:#5fe3e8; --red:#ff5a4a;
+  --display:'Archivo','Bahnschrift','Arial Narrow',sans-serif;
+  --mono:'Martian Mono','Cascadia Mono',Consolas,ui-monospace,monospace;
+  --sans:'Archivo','Bahnschrift',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{background:var(--void);}
 body{margin:0;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;
-  background:radial-gradient(rgba(216,198,156,.05) 1px,transparent 1.2px) 0 0/22px 22px,var(--void);}
+  background:radial-gradient(rgba(245,213,71,.05) 1px,transparent 1.2px) 0 0/22px 22px,var(--void);}
 a{color:var(--sand);}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
 header.top{border-bottom:1px solid var(--line);}
 header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:16px;}
-.brand{font-family:var(--display);font-size:13px;letter-spacing:.32em;color:#f1f3f5;white-space:nowrap;}
-.tag{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--sand);white-space:nowrap;}
+.brand{font-family:var(--display);font-stretch:125%;font-size:13px;letter-spacing:.18em;color:#f1f3f5;white-space:nowrap;}
+.tag{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.13em;color:var(--sand);white-space:nowrap;}
 .hero{padding:56px 0 32px;}
-.kick{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--sand);text-transform:uppercase;margin:0 0 14px;}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,52px);letter-spacing:.08em;line-height:1.15;margin:0 0 18px;color:#f4f1ea;}
+.kick{font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.16em;color:var(--sand);text-transform:uppercase;margin:0 0 14px;}
+h1{font-family:var(--display);font-stretch:125%;font-weight:400;font-size:clamp(28px,5vw,52px);letter-spacing:.08em;line-height:1.15;margin:0 0 18px;color:#f4f5f7;}
 h1 em{font-style:normal;color:var(--sand);}
 .lede{max-width:680px;font-size:18px;color:#c9ced5;margin:0 0 28px;}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:1px solid var(--sand);color:var(--sand);
-  font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-decoration:none;text-transform:uppercase;}
-.btn:hover{background:rgba(216,198,156,.08);}
+  font-family:var(--mono);font-stretch:87.5%;font-size:13px;letter-spacing:.12em;text-decoration:none;text-transform:uppercase;}
+.btn:hover{background:rgba(245,213,71,.08);}
 .btn.primary{background:var(--sand);color:#121314;font-weight:600;}
-.btn.primary:hover{background:#e6d7b2;}
+.btn.primary:hover{background:#fae37c;}
 /* Manual chooser: looks like the other buttons, opens a short menu */
 .dd{position:relative;}
 .dd summary{list-style:none;cursor:pointer;}
@@ -51,48 +52,48 @@ h1 em{font-style:normal;color:var(--sand);}
 .dd .menu{position:absolute;top:calc(100% + 6px);left:0;z-index:5;min-width:100%;width:max-content;max-width:min(380px,calc(100vw - 40px));background:var(--panel);border:1px solid var(--sand);display:grid;}
 .dd .menu a{display:block;padding:12px 16px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);}
 .dd .menu a:last-child{border-bottom:0;}
-.dd .menu a:hover{background:rgba(216,198,156,.08);}
-.dd .menu b{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);font-weight:500;}
+.dd .menu a:hover{background:rgba(245,213,71,.08);}
+.dd .menu b{font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand);font-weight:500;}
 .dd .menu small{display:block;font-size:13px;color:var(--dim);line-height:1.4;margin-top:2px;}
 .mansel{display:block;width:100%;max-width:340px;min-width:0;margin:6px 0 0;background:var(--panel);color:var(--ink);border:1px solid var(--line2);font:inherit;font-size:14px;padding:6px 8px;}
 @media (prefers-reduced-motion:reduce){.dd .car{transition:none;}}
-.note{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.04em;}
+.note{font-family:var(--mono);font-stretch:87.5%;font-size:12px;color:var(--dim);letter-spacing:.04em;}
 .shot{margin:36px 0 8px;border:1px solid var(--line2);display:block;width:100%;height:auto;}
-.cap{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 48px;}
+.cap{font-family:var(--mono);font-stretch:87.5%;font-size:12px;color:var(--faint);margin:0 0 48px;}
 section{padding:40px 0;border-top:1px solid var(--line);}
-h2{font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.24em;color:#f1f3f5;margin:0 0 22px;text-transform:uppercase;}
-h3{font-family:var(--mono);font-size:12px;letter-spacing:.24em;color:var(--sand);margin:22px 0 8px;text-transform:uppercase;}
+h2{font-family:var(--display);font-stretch:125%;font-weight:400;font-size:18px;letter-spacing:.13em;color:#f1f3f5;margin:0 0 22px;text-transform:uppercase;}
+h3{font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.13em;color:var(--sand);margin:22px 0 8px;text-transform:uppercase;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .card{border:1px solid var(--line);background:var(--panel);padding:18px 20px;}
-.card b{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--sand);margin-bottom:6px;font-weight:500;}
+.card b{display:block;font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.12em;color:var(--sand);margin-bottom:6px;font-weight:500;}
 .card p{margin:0;color:#c3c8cf;font-size:15px;}
 table{width:100%;border-collapse:collapse;font-size:15px;}
-th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--dim);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--line2);text-transform:uppercase;}
+th{text-align:left;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.12em;color:var(--dim);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--line2);text-transform:uppercase;}
 td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
-td.f a{font-family:var(--mono);font-size:14px;text-decoration:none;}
+td.f a{font-family:var(--mono);font-stretch:87.5%;font-size:14px;text-decoration:none;}
 td.f a:hover{text-decoration:underline;}
-td.s{font-family:var(--mono);font-size:12px;color:var(--faint);white-space:nowrap;}
+td.s{font-family:var(--mono);font-stretch:87.5%;font-size:12px;color:var(--faint);white-space:nowrap;}
 .blue{color:var(--blue);} .red{color:var(--red);}
 ol,ul{padding-left:20px;margin:6px 0;} li{margin:4px 0;}
-code{font-family:var(--mono);font-size:13px;background:#12161c;border:1px solid var(--line);padding:1px 6px;}
+code{font-family:var(--mono);font-stretch:87.5%;font-size:13px;background:#12161c;border:1px solid var(--line);padding:1px 6px;}
 footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--faint);font-size:13px;}
 footer p{margin:6px 0;}
 img.inline{width:100%;height:auto;border:1px solid var(--line2);}
 .news{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 26px;padding:9px 14px;border:1px solid var(--sand);
-  background:rgba(216,198,156,.07);color:var(--ink);text-decoration:none;font-size:14px;}
-.news:hover{background:rgba(216,198,156,.13);}
-.news b{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:#121314;background:var(--sand);padding:3px 8px;font-weight:600;}
-.news span{color:var(--sand);font-family:var(--mono);font-size:12px;letter-spacing:.08em;}
+  background:rgba(245,213,71,.07);color:var(--ink);text-decoration:none;font-size:14px;}
+.news:hover{background:rgba(245,213,71,.13);}
+.news b{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.12em;color:#121314;background:var(--sand);padding:3px 8px;font-weight:600;}
+.news span{color:var(--sand);font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.08em;}
 .log{display:grid;grid-template-columns:200px 1fr;gap:10px 28px;margin:0;}
-.log dt{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--sand);padding-top:3px;}
+.log dt{font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.13em;color:var(--sand);padding-top:3px;}
 .log dt small{display:block;color:var(--dim);letter-spacing:.06em;font-size:12px;margin-top:2px;}
 .log dd{margin:0 0 22px;color:#dfe3e7;}
 .log dd ul{margin:0;}
 .log dt.old,.log dd.old{opacity:.8;}
 .log figure{margin:14px 0 0;}
 .log figure img{display:block;width:100%;height:auto;border:1px solid var(--line2);}
-.log figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--dim);margin-top:6px;}
+.log figcaption{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;color:var(--dim);margin-top:6px;}
 .cl-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center;margin:16px 0;padding:16px 0;border-top:1px solid var(--line);}
 .cl-pair.flip .cl-note{order:2;}
 .cl-pair .cl-note ul{margin:0;}
@@ -103,7 +104,7 @@ img.inline{width:100%;height:auto;border:1px solid var(--line2);}
 @media (max-width:760px){.cl-pair{grid-template-columns:1fr;}.cl-pair.flip .cl-note{order:0;}}
 .figs{display:grid;grid-template-columns:1.7fr 1fr;gap:12px;align-items:start;}
 .older{margin-top:8px;border-top:1px solid var(--line);padding-top:14px;}
-.older summary{cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--sand);text-transform:uppercase;margin-bottom:18px;}
+.older summary{cursor:pointer;font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.11em;color:var(--sand);text-transform:uppercase;margin-bottom:18px;}
 @media (max-width:760px){
   .figs{grid-template-columns:1fr;}
   .log{grid-template-columns:1fr;gap:4px;}
@@ -118,12 +119,12 @@ img.inline{width:100%;height:auto;border:1px solid var(--line2);}
 dialog.lb{padding:0;border:1px solid var(--line2);background:var(--panel);color:var(--ink);max-width:96vw;max-height:94vh;overflow:auto;}
 dialog.lb::backdrop{background:rgba(5,7,11,.88);}
 dialog.lb img{display:block;max-width:94vw;max-height:84vh;width:auto;height:auto;margin:0 auto;cursor:zoom-out;}
-dialog.lb .lbbar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--dim);}
+dialog.lb .lbbar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.08em;color:var(--dim);}
 dialog.lb .lbbar span{flex:1;}
 dialog.lb button{font:inherit;color:var(--sand);background:none;border:1px solid var(--line2);padding:6px 12px;cursor:pointer;min-width:44px;min-height:36px;}
 dialog.lb button:hover{border-color:var(--sand);}
 .topr{display:flex;align-items:center;gap:14px;}
-.mus{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--sand);background:none;
+.mus{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.11em;color:var(--sand);background:none;
   border:1px solid var(--line2);padding:6px 10px;min-height:36px;cursor:pointer;text-transform:uppercase;white-space:nowrap;}
 .mus:hover,.mus:focus-visible{border-color:var(--sand);outline:none;}
 .mus .eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;}
@@ -137,9 +138,9 @@ dialog.lb button:hover{border-color:var(--sand);}
 @media (max-width:560px){.tag{display:none;}}
 .dn{margin:14px 0 0;padding:12px 16px;border-left:2px solid var(--sand);background:var(--panel);font-style:italic;color:#dfe3e7;}
 .opt{margin:0 0 10px;padding:10px 14px;border:1px solid var(--sand);color:#dfe3e7;}
-.opt b{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--sand);margin-right:10px;font-weight:500;}
-.dn b{display:block;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--sand);margin-bottom:4px;font-weight:500;}
-.log dt .latest{display:inline-block;margin-top:8px;font-size:10px;letter-spacing:.22em;color:#121314;background:var(--sand);padding:2px 7px;font-weight:600;}
+.opt b{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.12em;color:var(--sand);margin-right:10px;font-weight:500;}
+.dn b{display:block;font-style:normal;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.12em;color:var(--sand);margin-bottom:4px;font-weight:500;}
+.log dt .latest{display:inline-block;margin-top:8px;font-size:10px;letter-spacing:.12em;color:#121314;background:var(--sand);padding:2px 7px;font-weight:600;}
 .vh{margin:34px 0 10px;}
 .vers{border-top:1px solid var(--line);}
 .ver{border-bottom:1px solid var(--line);}
@@ -147,15 +148,15 @@ dialog.lb button:hover{border-color:var(--sand);}
 .ver summary::-webkit-details-marker{display:none;}
 .ver summary:hover .vi,.ver summary:focus-visible .vi,.ver[open] .vi{color:var(--sand);}
 .ver summary:focus-visible{outline:2px solid var(--sand);outline-offset:2px;}
-.vv{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:var(--sand);}
-.vd{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap;}
+.vv{font-family:var(--mono);font-stretch:87.5%;font-size:13px;letter-spacing:.13em;color:var(--sand);}
+.vd{font-family:var(--mono);font-stretch:87.5%;font-size:12px;color:var(--dim);white-space:nowrap;}
 .vt{color:#dfe3e7;font-size:15px;}
 .vi{color:var(--faint);display:inline-flex;justify-self:end;}
 .vi .mm{display:none;}.ver[open] .vi .ii{display:none;}.ver[open] .vi .mm{display:inline;}
 .vb{padding:4px 4px 24px;color:#dfe3e7;}
 .vb ul{margin:0;}
 .vb figure{margin:14px 0 0;}.vb figure img{display:block;width:100%;height:auto;border:1px solid var(--line2);cursor:zoom-in;}
-.vb figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--dim);margin-top:6px;}
+.vb figcaption{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;color:var(--dim);margin-top:6px;}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 @media (max-width:720px){.ver summary{grid-template-columns:auto 1fr 28px;row-gap:2px;}.vd{grid-column:2;grid-row:1;}.vt{grid-column:1/3;grid-row:2;font-size:14px;}.vi{grid-column:3;grid-row:1/3;}}
 .vt{display:flex;flex-wrap:wrap;gap:6px;}
@@ -165,15 +166,15 @@ dialog.lb button:hover{border-color:var(--sand);}
 ul.sub{list-style:none;margin:6px 0 0;padding:0 0 0 4px;}
 ul.sub li{position:relative;padding-left:18px;margin:3px 0;color:#c9ced5;}
 ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;height:1px;background:var(--sand);}
-.vt .cat{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);border:1px solid var(--line2);padding:2px 8px;}
+.vt .cat{font-style:normal;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sand);border:1px solid var(--line2);padding:2px 8px;}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.22</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
+<header class="top"><div class="wrap"><span class="brand">COGNITIVE TERRAIN</span><div class="topr"><span class="tag">PLAYTEST BUILD 0.22.1</span><button class="mus" id="mus" type="button" aria-pressed="false" title="Music: Night Watch, the game's main theme"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musL">Music off</span></button></div></div></header>
 
 <main class="wrap">
   <div class="hero">
-    <a class="news" href="#whats-new"><b>NEW BUILD 0.22</b> Lessons Learned is aimed at a node and its links, and defences spread across the map like nerves, blue for yours and red for theirs. <span>What's new ↓</span></a>
+    <a class="news" href="#whats-new"><b>NEW BUILD 0.22.1</b> A new look: new type, one gold accent, a clearer board and rebuilt result screens. The rules are unchanged. <span>What's new ↓</span></a>
     <p class="kick">An educational wargame of cognitive warfare</p>
     <h1>No shots fired.<br><em>Sixteen weeks</em> to win a mind.</h1>
     <p class="lede">Blue and its opponent, Olvana or Donovia, each try to cloud the other's judgment while keeping their own clear. The board is two decision-making systems drawn as brains, networks of connected nodes. Every node is a newsroom, a cabinet, a crisis team or a public's trust. Four crises decide who comes out ahead.</p>
@@ -188,24 +189,34 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
       <a class="btn" href="#downloads">All downloads</a>
     </div>
     <p class="note">No account, no install. Works on any computer with a modern browser. Your progress stays on your own machine.</p>
-    <picture><source srcset="images/board.jpg?v=0.22" media="(prefers-reduced-motion: reduce)"><img class="shot" src="images/play.gif?v=0.22" alt="A turn of play: Blue picks Plant Stories and hovers Olvana's News Media, where the preview shows a push of +45, the node going from Olvana 100 to Olvana 55, and LIKELY · 10% CHANCE TO FAIL. Blue strikes and the result card opens under Their edge on you, follows up with Bot Swarm on the same node, ends the turn, and Olvana's moves light up on Blue's map with a card for each beside the side panel." width="960" height="600"></picture>
+    <video class="shot" id="heroVid" src="images/play.webm?v=0.22.1" poster="images/board.jpg?v=0.22.1" width="960" height="600" autoplay muted loop playsinline aria-label="A turn of play: Blue picks Plant Stories and hovers Olvana's News Media, where the move preview shows the push next to its verdict. Blue strikes and the story card opens under Their edge on you, follows up with Bot Swarm on the same node and ends the turn; Olvana's moves then light up on Blue's map."></video>
+    <script>/* A still picture for anyone who asks their device for reduced motion */ (function(){var v=document.getElementById('heroVid');if(v&&window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();v.controls=true;}})();</script>
     <p class="cap">A turn in Typhoon Ines: Blue strikes Olvana's entry points, then Olvana answers. (A still picture shows instead if your device asks for reduced motion.)</p>
   </div>
 
   <section id="whats-new">
 <h2>What's new</h2>
 <dl class="log">
-<dt>0.22<small>14 Oct 2026 · browser</small><span class="latest">LATEST</span></dt>
+<dt>0.22.1<small>22 Oct 2026 · browser</small><span class="latest">LATEST</span></dt>
 <dd>
-<div class="cl-pair"><div class="cl-note"><ul><li><b>Defences you can read at a glance.</b> A Watch Team or Prebunk now spreads like nerves: glowing fibres run from the node it was played on to every node it covers, blue for Blue's and red for Red's, with a faint signal travelling outward. A tag says how many nodes and how many weeks. Pick a card and hover a node, and the same nerves, in your colour, show what it would cover.</li><li><b>Lessons Learned is aimed.</b> You play it on one of your nodes: that node and every node linked to it are pulled back a little, lose any framing, and are trained for the rest of the game. Trained nodes recover faster every week and start to come back by themselves even once the other side holds them. A node can be trained up to three times; a book badge and a ring marked in steps show it. The opponent's version works the same way at half strength.</li></ul></div><figure><img width="900" height="645" alt="Blue's mind with a Watch Team on Social Media: glowing blue fibres run from Social Media to the five nodes linked to it, each with an eye badge, under a tag reading WATCH TEAM · 6 NODES · 3 WK. Several nodes also carry a book badge for Lessons Learned." loading="lazy" src="images/changelog/0.22.0-nerves.jpg"/><figcaption>A Watch Team spreading like nerves</figcaption></figure></div>
+<div class="cl-pair"><div class="cl-note"><ul><li><b>A new look, same game.</b> New type throughout, with a single gold accent for what needs you now: END TURN, the next crisis and anything you can press. The panels are flat graphite; the red and blue glow stays on the cards, the minimap and each side's numbers.</li><li><b>Result screens rebuilt.</b> Week in review sets your moves against theirs, shows your five areas as gauges with last week marked, and gives the next crisis with how it would go today and what to play. A crisis result shows each side on a Mistake, Delayed, Sound scale, and a new technology offers its two choices as doors beside a dial of how disruptive it is.</li><li><b>Less to read on screen.</b> Standing hints and repeated costs are gone. Hover a card for what it does, where it works best, how to play it and a real-world example.</li></ul></div><figure><img width="900" height="593" alt="Week in review at the end of week 3: both sides' health bars at the top; on the left Blue's Frame the Story in a C grade box with +20, on the right Olvana's Plant Stories and Bot Swarm with their grades and shifts and tags for what helped them, and its Official Statement as a gold callout; below, Blue's five areas as gauges with last week marked, and the next crisis, The Relief Flotilla, forecast SOUND with a suggestion to play Official Statement on Social Media." loading="lazy" src="images/changelog/0.22.1-review.jpg"/><figcaption>Week in review: your moves against theirs</figcaption></figure></div>
+<ul>
+<li><b>A clearer board.</b> Area names sit on the outer edge of each area, the area a crisis tests is outlined in gold with a CRISIS TEST tag, and labels and status icons no longer run into each other.</li>
+<li>Your move's story card leads with the shift as one big number; What happened shows views, likes, comments and shares as tiles, with the arithmetic folded away.</li>
+<li>Card descriptions and area effects are in plain words, without multipliers or percentages.</li>
+<li>Fixed: after a crisis was scored, the side panel and Week in review still called it "this week".</li>
+<li>All three manuals use the new type and colours, with the pictures retaken.</li>
+<li>Two-player codes from 0.22 still work.</li>
+</ul>
+</dd>
+</dl><h3 class="vh">Earlier versions</h3>
+<div class="vers">
+<details class="ver"><summary><span class="vv">0.22</span><span class="vd">14 Oct 2026 · browser</span><span aria-label="Categories: Rules, Interface" class="vt" role="group"><i class="cat">Rules</i><i class="cat">Interface</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.22</span></summary>
+<div class="vb"><div class="cl-pair"><div class="cl-note"><ul><li><b>Defences you can read at a glance.</b> A Watch Team or Prebunk now spreads like nerves: glowing fibres run from the node it was played on to every node it covers, blue for Blue's and red for Red's, with a faint signal travelling outward. A tag says how many nodes and how many weeks. Pick a card and hover a node, and the same nerves, in your colour, show what it would cover.</li><li><b>Lessons Learned is aimed.</b> You play it on one of your nodes: that node and every node linked to it are pulled back a little, lose any framing, and are trained for the rest of the game. Trained nodes recover faster every week and start to come back by themselves even once the other side holds them. A node can be trained up to three times; a book badge and a ring marked in steps show it. The opponent's version works the same way at half strength.</li></ul></div><figure><img width="900" height="645" alt="Blue's mind with a Watch Team on Social Media: glowing blue fibres run from Social Media to the five nodes linked to it, each with an eye badge, under a tag reading WATCH TEAM · 6 NODES · 3 WK. Several nodes also carry a book badge for Lessons Learned." loading="lazy" src="images/changelog/0.22.0-nerves.jpg"/><figcaption>A Watch Team spreading like nerves</figcaption></figure></div>
 <ul>
 <li>All three manuals, the map key and the card text are updated, with the pictures retaken.</li>
 <li>Two-player codes from 0.21 builds do not work in 0.22.</li>
-</ul>
-</dd>
-</dl>
-<h3 class="vh">Earlier versions</h3>
-<div class="vers">
+</ul></div></details>
 <details class="ver"><summary><span class="vv">0.21.1</span><span class="vd">14 Oct 2026 · browser</span><span aria-label="Categories: Rules, Interface" class="vt" role="group"><i class="cat">Rules</i><i class="cat">Interface</i></span><span aria-hidden="true" class="vi"><svg height="18" viewbox="0 0 20 20" width="18"><circle cx="10" cy="10" fill="none" r="8.5" stroke="currentColor" stroke-width="1.4"></circle><path class="ii" d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path class="mm" d="M6.5 10h7" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></span><span class="sr">Show what changed in 0.21.1</span></summary>
 <div class="vb"><div class="cl-pair"><div class="cl-note"><ul><li><b>A less one-track Standard opponent.</b> Red no longer hammers one area all campaign. When three weeks on an area have gained it nothing, it moves to another, and the longer it stays on one, the more it looks elsewhere.</li><li><b>It digs in when it falls behind.</b> Once clearly behind on Decision Health it plays more defence, so taking the initiative no longer settles the game on the spot. Veteran and Elite, which already move their aim between crises, are unchanged.</li><li><b>Tabs in their side's colours.</b> INFLUENCE (SHAPE in Military words) is framed in red and PROTECT (DEFEND) in blue, like the attack and defence cards.</li></ul></div><figure><img width="800" height="352" alt="The two tabs at the top left: INFLUENCE OLVANA framed in red and selected, PROTECT BLUE · 2 framed in blue." loading="lazy" src="images/changelog/0.21.1-tabs.jpg"/><figcaption>INFLUENCE in red, PROTECT in blue</figcaption></figure></div>
 <ul>
@@ -422,7 +433,7 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
         <p>The Multi-Horizon Cognitive OODA framework, the engagement-effectiveness metric and the disruptive-innovation forecast by Rushing, Xu and colleagues; US Army ATP 3-13.1; and open reporting on cognitive operations. Full credits are in the manual and the in-game guide.</p>
       </div>
       <div>
-        <img class="inline" src="images/preview.jpg?v=0.22" alt="The move preview on a prebunked News Media: a push of +23, a red and blue bar with a gold arrow from Olvana 100 now to Olvana 77 after the move, the verdict DENTS IT, arrows for what helps and hurts, and LIKELY · 18% CHANCE TO FAIL." width="900" height="1226" loading="lazy">
+        <img class="inline" src="images/preview.jpg?v=0.22.1" alt="The move preview on Olvana's News Media: +45 next to the verdict DENTS IT, a red and blue bar with a gold arrow from Olvana 100 now to Olvana 55 after the move, arrows for what helps and hurts, and LIKELY · 10% CHANCE TO FAIL." width="900" height="926" loading="lazy">
         <p class="cap" style="margin:8px 0 0">Pick a card and hover a node: one number for the push, where the node will lean after, and the odds in words.</p>
       </div>
     </div>
@@ -430,12 +441,12 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="note" style="margin:0 0 14px">Version 0.22 runs in your browser: play it online with <b>Play in your browser</b> above, or download it as one HTML file that works offline. With it come the Field Manual and a two-sided Quick Reference for players, and the Practitioner's Manual for facilitators. The game is supported in the browser only for now. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
+    <p class="note" style="margin:0 0 14px">Version 0.22.1 runs in your browser: play it online with <b>Play in your browser</b> above, or download it as one HTML file that works offline. With it come the Field Manual and a two-sided Quick Reference for players, and the Practitioner's Manual for facilitators. The game is supported in the browser only for now. Every earlier version, with its files and notes, is on the <a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases">Releases page</a>.</p>
     <table>
       <thead><tr><th>If you want to…</th><th>Download</th><th>Size</th></tr></thead>
       <tbody>
-        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.22.0/cognitive-terrain-0.22.html">cognitive-terrain-0.22.html</a></td><td class="s">3.0 MB</td></tr>
-        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Quick Reference (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">13.7 MB</td></tr>
+        <tr><td>Play offline on any computer: double-click to open in your browser</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.22.1/cognitive-terrain-0.22.1.html">cognitive-terrain-0.22.1.html</a></td><td class="s">2.6 MB</td></tr>
+        <tr><td>Read the manual: <select class="mansel" id="manSel" aria-label="Which manual"><option value="f" selected>Field Manual (players)</option><option value="p">Practitioner's Manual (facilitators)</option><option value="a">Quick Reference (two sides)</option></select></td><td class="f"><a id="manLink" href="manual/Cognitive-Terrain-Field-Manual.pdf">Field Manual (PDF)</a></td><td class="s" id="manSize">12.2 MB</td></tr>
         <tr><td>Optional: Immersive Briefings voice pack (load it in Settings)</td><td class="f"><a href="https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/voice-emma-1/CognitiveTerrain-Voice-Emma.zip">CognitiveTerrain-Voice-Emma.zip</a></td><td class="s">111 MB</td></tr>
       </tbody>
     </table>
@@ -575,8 +586,8 @@ ul.sub li::before{content:"";position:absolute;left:3px;top:.7em;width:7px;heigh
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && dd.open) { dd.open = false; dd.querySelector('summary').focus(); } });
   // Downloads table: one row, two manuals.
   var sel = document.getElementById('manSel'), link = document.getElementById('manLink'), size = document.getElementById('manSize');
-  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.22.0/';
-  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '13.7 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '7.6 MB'], a: ['manual/Cognitive-Terrain-Quick-Reference.pdf', 'Quick Reference (PDF)', '1.8 MB'] };
+  var R = 'https://github.com/KW-Wargame/cognitive-terrain-releases-playtest/releases/download/v0.22.1/';
+  var M = { f: ['manual/Cognitive-Terrain-Field-Manual.pdf', 'Field Manual (PDF)', '12.2 MB'], p: ['manual/Cognitive-Terrain-Practitioners-Manual.pdf', "Practitioner's Manual (PDF)", '8.2 MB'], a: ['manual/Cognitive-Terrain-Quick-Reference.pdf', 'Quick Reference (PDF)', '1.6 MB'] };
   if (sel) { sel.onchange = function () { var m = M[sel.value]; link.href = m[0]; link.textContent = m[1]; size.textContent = m[2]; }; }
 })();
 </script>
